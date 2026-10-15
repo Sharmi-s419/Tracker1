@@ -10,7 +10,8 @@ import BookingContact from './components/BookingContact';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import OpeningScreen from './components/OpeningScreen';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import WhatsAppIcon from './components/WhatsAppIcon';
 
 export default function App() {
   const [showOpening, setShowOpening] = useState(() => {
@@ -111,9 +112,10 @@ export default function App() {
           href="https://wa.me/918300504187?text=Hello%20Hotel%20Lara%20International%2C%20I%20would%20like%20to%20enquire%20about%20room%20availability."
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Chat directly with Hotel Lara International on WhatsApp"
           style={{
-            width: '52px',
-            height: '52px',
+            width: '54px',
+            height: '54px',
             borderRadius: '50%',
             backgroundColor: '#25D366',
             color: '#FFFFFF',
@@ -122,13 +124,13 @@ export default function App() {
             justifyContent: 'center',
             boxShadow: '0 8px 24px rgba(37, 211, 102, 0.45)',
             border: '2px solid #FFFFFF',
-            transition: 'transform 0.3s ease',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
           }}
-          title="Chat with Hotel Lara on WhatsApp"
+          title="Chat with Hotel Lara on WhatsApp (+91 8300504187)"
           onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
           onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
         >
-          <MessageCircle size={26} />
+          <WhatsAppIcon size={30} color="#FFFFFF" ariaLabel="WhatsApp" />
         </a>
 
         <a

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RotatingLogo from './RotatingLogo';
-import { Phone, MessageCircle, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Phone, Menu, X, ArrowUpRight } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Header({ onBookClick, onReplayOpening }) {
   const [scrolled, setScrolled] = useState(false);
@@ -302,10 +303,17 @@ export default function Header({ onBookClick, onReplayOpening }) {
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-whatsapp"
-            style={{ width: '100%' }}
+            style={{
+              width: '100%',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.6rem',
+            }}
+            aria-label="Enquire on WhatsApp with Hotel Lara"
           >
-            <MessageCircle size={16} />
-            WhatsApp Enquiry
+            <WhatsAppIcon size={20} color="#FFFFFF" />
+            <span>WhatsApp Enquiry</span>
           </a>
 
           <a

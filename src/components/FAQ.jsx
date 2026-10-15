@@ -3,8 +3,12 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
-    q: 'How far is Hotel Lara International from the famous Suchindram Thanumalayan Temple?',
-    a: 'Hotel Lara International is situated approximately 500 meters from the sacred Arulmigu Thanumalayan Temple. Guests can easily walk there within 2 to 3 minutes, making it especially convenient for early morning pujas and evening temple car festivals.',
+    q: 'How far is Hotel Lara International from Thanumalayan Temple, Suchindram?',
+    a: 'Hotel Lara International is situated approximately 1 km from Thanumalayan Temple, Suchindram. Guests can reach the temple within a 3 to 4 minute drive or convenient stroll, making it especially convenient for early morning pujas and evening temple car festivals.',
+  },
+  {
+    q: 'Is Hotel Lara International close to ISKCON Temple, Kanyakumari?',
+    a: 'Yes! Hotel Lara International is located closest to ISKCON, Kanyakumari (Sri Sri Radha Madhav Temple / Bhaktivedanta Center on Nalloor Road, Akkarai), providing peaceful, comfortable lodgings for visiting devotees and families.',
   },
   {
     q: 'What are the standard check-in and check-out timings?',

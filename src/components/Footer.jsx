@@ -1,6 +1,7 @@
 import React from 'react';
 import RotatingLogo from './RotatingLogo';
-import { Phone, MapPin, MessageCircle, Navigation, ArrowUp, Mail } from 'lucide-react';
+import { Phone, MapPin, Navigation, ArrowUp, Mail } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Footer({ onReplayOpening }) {
   const scrollToTop = () => {
@@ -137,7 +138,7 @@ export default function Footer({ onReplayOpening }) {
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                 <MapPin size={18} color="#C6A15B" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <span>
-                  Main Road (Near Thanumalayan Temple), <br />
+                  Main Road (Near Thanumalayan Temple & ISKCON), <br />
                   Suchindram, Kanyakumari District, <br />
                   Tamil Nadu — 629704.
                 </span>
@@ -153,12 +154,13 @@ export default function Footer({ onReplayOpening }) {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <MessageCircle size={16} color="#25D366" style={{ flexShrink: 0 }} />
+                <WhatsAppIcon size={18} color="#25D366" style={{ flexShrink: 0 }} />
                 <a
                   href="https://wa.me/918300504187"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: '#25D366', fontWeight: 500 }}
+                  aria-label="Direct WhatsApp message to Hotel Lara International (+91 8300504187)"
                 >
                   WhatsApp: +91 8300504187
                 </a>
@@ -181,19 +183,20 @@ export default function Footer({ onReplayOpening }) {
               Directions & Booking
             </h4>
             <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-              Directly accessible from the Suchindram-Kanyakumari bypass with covered portico parking for guest vehicles.
+              Directly accessible from the Suchindram-Kanyakumari corridor with covered portico parking for guest vehicles.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Suchindram+Thanumalayan+Temple+Kanyakumari"
+                href="https://maps.app.goo.gl/Tk3uEur3cttu12NZA?g_st=aw"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-outline-gold"
                 style={{ padding: '0.65rem 1rem', fontSize: '0.78rem' }}
+                aria-label="View Hotel Lara International on Google Maps"
               >
                 <Navigation size={14} />
-                <span>Google Maps Route</span>
+                <span>View on Google Maps</span>
               </a>
 
               <a

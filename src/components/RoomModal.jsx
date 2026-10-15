@@ -1,5 +1,6 @@
 import React from 'react';
-import { X, Check, MessageCircle, Phone, BedDouble, Users, Maximize, Wind, Tv, Sparkles } from 'lucide-react';
+import { X, Check, Phone, BedDouble, Users, Maximize, Wind, Tv, Sparkles } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function RoomModal({ room, onClose }) {
   if (!room) return null;
@@ -225,9 +226,15 @@ export default function RoomModal({ room, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"
-                style={{ padding: '0.75rem 1.4rem' }}
+                style={{
+                  padding: '0.75rem 1.4rem',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.55rem',
+                }}
+                aria-label={`Book ${room.title} on WhatsApp`}
               >
-                <MessageCircle size={16} />
+                <WhatsAppIcon size={20} color="#FFFFFF" />
                 <span>Book on WhatsApp</span>
               </a>
               <a

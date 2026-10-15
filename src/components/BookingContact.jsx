@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Phone, MessageCircle, Send, CheckCircle2, AlertCircle, Calendar, Users, BedDouble, User, Mail, Clock } from 'lucide-react';
+import { Phone, Send, CheckCircle2, AlertCircle, Calendar, Users, BedDouble, User, Mail, Clock } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function BookingContact({ initialBookingState }) {
   const today = new Date().toISOString().split('T')[0];
@@ -235,7 +236,7 @@ Please confirm availability and current tariff. Thank you!`;
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                <MessageCircle size={24} color="#25D366" />
+                <WhatsAppIcon size={24} color="#25D366" />
                 <h4 style={{ fontSize: '1.1rem', color: '#FFFFFF' }}>
                   Instant WhatsApp Desk
                 </h4>
@@ -249,9 +250,16 @@ Please confirm availability and current tariff. Thank you!`;
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"
-                style={{ width: '100%' }}
+                style={{
+                  width: '100%',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.65rem',
+                }}
+                aria-label="Chat directly on WhatsApp with Hotel Lara (+91 8300504187)"
               >
-                <MessageCircle size={16} />
+                <WhatsAppIcon size={20} color="#FFFFFF" />
                 <span>Chat on WhatsApp (+91 8300504187)</span>
               </a>
             </div>
@@ -318,9 +326,19 @@ Please confirm availability and current tariff. Thank you!`;
                 <button
                   onClick={handleSendToWhatsApp}
                   className="btn btn-whatsapp"
-                  style={{ width: '100%', padding: '1rem', marginBottom: '1rem', fontSize: '0.9rem' }}
+                  style={{
+                    width: '100%',
+                    padding: '1rem',
+                    marginBottom: '1rem',
+                    fontSize: '0.9rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.65rem',
+                  }}
+                  aria-label="Send reservation details via WhatsApp to Hotel Desk"
                 >
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={20} color="#FFFFFF" />
                   <span>Send via WhatsApp to Hotel Desk</span>
                 </button>
 

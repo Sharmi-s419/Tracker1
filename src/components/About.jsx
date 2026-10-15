@@ -154,7 +154,7 @@ export default function About() {
                   Prime Location
                 </h4>
                 <p style={{ fontSize: '0.82rem', color: 'var(--color-charcoal-muted)', lineHeight: 1.5 }}>
-                  Under 3 minutes to Thanumalayan Temple and easy drive to Kanyakumari beaches.
+                  Approx. 1 km to Thanumalayan Temple and closest to ISKCON, Kanyakumari.
                 </p>
               </div>
             </div>
@@ -178,7 +178,7 @@ export default function About() {
         >
           <div>
             <div style={{ fontFamily: 'var(--font-serif)', fontSize: '2.2rem', color: 'var(--color-gold)', fontWeight: 600 }}>
-              500 m
+              ~1 km
             </div>
             <div style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.85)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               To Thanumalayan Temple

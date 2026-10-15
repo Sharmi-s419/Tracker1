@@ -1,6 +1,7 @@
 import React from 'react';
 import RotatingLogo from './RotatingLogo';
-import { ArrowUpRight, MessageCircle, MapPin, Sparkles } from 'lucide-react';
+import { ArrowUpRight, MapPin, Sparkles } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Hero({ onBookClick, onExploreRooms }) {
   return (
@@ -106,8 +107,8 @@ export default function Hero({ onBookClick, onExploreRooms }) {
               }}
             >
               Discover a welcoming stay at Hotel Lara International, featuring comfortable air-conditioned
-              accommodation, modern amenities, and convenient access to the sacred Arulmigu Thanumalayan
-              Temple and scenic Kanyakumari coast.
+              accommodation, modern amenities, and convenient access to Thanumalayan Temple, Suchindram,
+              closest proximity to ISKCON, Kanyakumari, and the scenic southern coast.
             </p>
 
             {/* CTAs */}
@@ -140,9 +141,13 @@ export default function Hero({ onBookClick, onExploreRooms }) {
                 style={{
                   padding: '1rem 1.8rem',
                   fontSize: '0.88rem',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.65rem',
                 }}
+                aria-label="Book via WhatsApp on +91 8300504187"
               >
-                <MessageCircle size={16} />
+                <WhatsAppIcon size={20} color="#FFFFFF" />
                 <span>WhatsApp Booking</span>
               </a>
 

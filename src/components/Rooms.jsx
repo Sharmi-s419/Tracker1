@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RoomModal from './RoomModal';
-import { BedDouble, Users, Wind, ArrowRight, MessageCircle, Tv, Sparkles, Check } from 'lucide-react';
+import { BedDouble, Users, Wind, ArrowRight, Tv, Sparkles, Check } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const roomsData = [
   {
@@ -347,11 +348,15 @@ export default function Rooms({ onSelectRoomForBooking }) {
                       rel="noopener noreferrer"
                       className="btn btn-whatsapp"
                       style={{
-                        padding: '0.75rem 0.8rem',
-                        fontSize: '0.76rem',
+                        padding: '0.75rem 0.85rem',
+                        fontSize: '0.78rem',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.45rem',
                       }}
+                      aria-label={`Enquire about ${room.title} on WhatsApp`}
                     >
-                      <MessageCircle size={14} />
+                      <WhatsAppIcon size={18} color="#FFFFFF" />
                       <span>WhatsApp</span>
                     </a>
                   </div>
