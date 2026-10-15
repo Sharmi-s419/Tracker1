@@ -1,0 +1,311 @@
+/* ==========================================================================
+   HOTEL LARA INTERNATIONAL — LUXURY OPENING ANIMATION SCREEN
+   Inspired by ERA Residence's high-end architectural opening experience.
+   Deep Navy (#091020), Rich Gold (#C6A15B), Warm Ivory (#F7F4EC)
+   ========================================================================== */
+
+.opening-screen-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background-color: #080D1A;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #152342 0%,
+    #0C1629 55%,
+    #070B16 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: all;
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+/* Curtain reveal state: slides up smoothly revealing the homepage */
+.opening-screen-overlay.is-revealing {
+  transform: translateY(-100%);
+  border-bottom: 2px solid rgba(198, 161, 91, 0.85);
+  box-shadow: 0 20px 60px rgba(198, 161, 91, 0.35), 0 4px 20px rgba(198, 161, 91, 0.5);
+}
+
+/* Central Stage Container */
+.opening-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.45s ease-out;
+  will-change: transform, opacity;
+}
+
+.opening-screen-overlay.is-revealing .opening-stage {
+  transform: translateY(-30px) scale(0.96);
+  opacity: 0;
+}
+
+/* 1. Atmospheric Ambient Gold Glow Aura */
+.opening-aura-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  height: 480px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(198, 161, 91, 0.16) 0%,
+    rgba(223, 191, 125, 0.08) 35%,
+    rgba(16, 28, 53, 0) 70%
+  );
+  filter: blur(32px);
+  pointer-events: none;
+  animation: openingPulseAura 3s ease-in-out infinite alternate;
+}
+
+@keyframes openingPulseAura {
+  0% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+/* 2. Logo Wrapper */
+.opening-logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3. Delicate Outer Concentric Gold Accent Rings */
+.opening-accent-ring-outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(230px, 32vw, 320px);
+  height: clamp(230px, 32vw, 320px);
+  transform: translate(-50%, -50%) scale(0.85);
+  border-radius: 50%;
+  border: 1px solid rgba(198, 161, 91, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  animation: ringOuterExpand 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+.opening-accent-ring-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(210px, 29vw, 290px);
+  height: clamp(210px, 29vw, 290px);
+  transform: translate(-50%, -50%) scale(0.9);
+  border-radius: 50%;
+  border: 1px dashed rgba(198, 161, 91, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  animation: ringInnerExpand 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+@keyframes ringOuterExpand {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ringInnerExpand {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.88);
+  }
+  60% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.45;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* 4. Logo Specific SVG Animation Sequences */
+/* Central Floral Emblem: Stable fade & subtle scale */
+.opening-central-emblem {
+  animation: emblemIntro 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  transform-origin: 0px 0px;
+}
+
+@keyframes emblemIntro {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Circular Text: Fades in gracefully and orbits continuously */
+.opening-text-fade {
+  animation: textFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 5. Delicate Gold Accent Finishing Touch (Underneath Logo) */
+.opening-finishing-accent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  opacity: 0;
+  animation: accentFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+}
+
+.opening-accent-line {
+  height: 1px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, rgba(198, 161, 91, 0.7), transparent);
+  animation: lineExpand 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
+}
+
+.opening-accent-star {
+  color: var(--color-gold);
+  font-size: 0.65rem;
+  opacity: 0.8;
+  transform: scale(0.8);
+  animation: starPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards;
+}
+
+.opening-accent-text {
+  font-family: var(--font-serif);
+  font-size: clamp(0.68rem, 1.4vw, 0.78rem);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+  white-space: nowrap;
+}
+
+@keyframes lineExpand {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: clamp(35px, 8vw, 65px);
+  }
+}
+
+@keyframes starPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes accentFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 6. Discreet Skip Control (Top Right) */
+.opening-skip-btn {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  z-index: 10;
+  background: rgba(16, 28, 53, 0.5);
+  border: 1px solid rgba(198, 161, 91, 0.25);
+  color: rgba(247, 244, 236, 0.65);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  animation: skipBtnFade 0.5s ease-out 1.2s forwards;
+  transition: all 0.25s ease;
+}
+
+.opening-skip-btn:hover {
+  background: rgba(198, 161, 91, 0.18);
+  border-color: rgba(198, 161, 91, 0.6);
+  color: var(--color-gold-bright);
+  transform: translateY(-1px);
+}
+
+@keyframes skipBtnFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 7. Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .opening-screen-overlay {
+    transition: opacity 0.2s ease !important;
+  }
+  .opening-screen-overlay.is-revealing {
+    transform: none !important;
+    opacity: 0 !important;
+  }
+  .opening-accent-ring-outer,
+  .opening-accent-ring-inner,
+  .opening-aura-glow,
+  .opening-central-emblem,
+  .opening-text-fade,
+  .opening-finishing-accent,
+  .opening-accent-line {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
