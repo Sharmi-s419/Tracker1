@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Hotel, Lock, User, AlertCircle, ArrowRight } from 'lucide-react';
+import { Lock, User, AlertCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import RotatingLogo from '../components/RotatingLogo';
 
-export const Login = ({ onLoginSuccess }) => {
+export const Login = ({ onLoginSuccess, onBackToGuest }) => {
   const { login } = useAuth();
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('admin123');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -35,6 +36,7 @@ export const Login = ({ onLoginSuccess }) => {
       style={{
         minHeight: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#0A1120',
@@ -42,6 +44,27 @@ export const Login = ({ onLoginSuccess }) => {
         backgroundImage: 'radial-gradient(circle at 50% 20%, rgba(198, 161, 91, 0.15) 0%, transparent 60%)',
       }}
     >
+      {onBackToGuest && (
+        <div style={{ width: '100%', maxWidth: '420px', marginBottom: '1rem' }}>
+          <button
+            onClick={onBackToGuest}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#DFBE7D',
+              fontSize: '0.85rem',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              cursor: 'pointer',
+              padding: '0.5rem 0',
+            }}
+          >
+            <ArrowLeft size={16} /> Back to Guest Booking
+          </button>
+        </div>
+      )}
+
       <div
         style={{
           width: '100%',
@@ -63,21 +86,15 @@ export const Login = ({ onLoginSuccess }) => {
         >
           <div
             style={{
-              width: '54px',
-              height: '54px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, #C6A15B, #DFBE7D)',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#0A1120',
               marginBottom: '1rem',
-              boxShadow: '0 4px 14px rgba(198, 161, 91, 0.4)',
             }}
           >
-            <Hotel size={28} />
+            <RotatingLogo size={58} speed={24} theme="gold" idPrefix="login" />
           </div>
-          <h2 style={{ color: '#FFFFFF', fontSize: '1.35rem', fontWeight: 700, letterSpacing: '0.04em' }}>
+          <h2 style={{ color: '#FFFFFF', fontSize: '1.25rem', fontWeight: 700, letterSpacing: '0.04em' }}>
             HOTEL LARA INTERNATIONAL
           </h2>
           <p style={{ color: '#DFBE7D', fontSize: '0.8rem', marginTop: '0.25rem', letterSpacing: '0.05em' }}>

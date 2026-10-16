@@ -10,10 +10,12 @@ class RoomStatus(models.TextChoices):
 class Room(models.Model):
     room_number = models.CharField(max_length=20, unique=True, help_text="Configurable room number, e.g. 101, 102")
     room_type = models.CharField(max_length=100, default='Standard Room', help_text="Configurable category or type")
+    bed_type = models.CharField(max_length=100, blank=True, default='Double Bed', help_text="Configurable bed configuration, e.g. Teakwood King Bed, Double Bed")
     floor = models.CharField(max_length=50, blank=True, default='1st Floor')
     capacity = models.PositiveIntegerField(default=2, help_text="Maximum guest capacity")
     base_price_per_night = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'), help_text="Configurable base price per night in INR")
     status = models.CharField(max_length=20, choices=RoomStatus.choices, default=RoomStatus.AVAILABLE)
+    amenities = models.TextField(blank=True, default='', help_text="Configurable room amenities")
     description = models.TextField(blank=True, default='')
     is_active = models.BooleanField(default=True, help_text="True if part of active 14-room inventory")
     created_at = models.DateTimeField(auto_now_add=True)

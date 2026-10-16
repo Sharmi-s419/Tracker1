@@ -89,39 +89,34 @@ export default function Hero({ onBookClick, onExploreRooms }) {
             <h1
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(2.3rem, 5vw, 4.2rem)',
+                fontSize: 'clamp(2.4rem, 5.2vw, 4.4rem)',
                 fontWeight: 600,
                 color: '#FFFFFF',
-                letterSpacing: '0.03em',
-                lineHeight: 1.14,
+                letterSpacing: '0.02em',
+                lineHeight: 1.15,
                 marginBottom: '1.25rem',
               }}
             >
-              Hotel Lara International <br />
-              <span className="text-gold-gradient" style={{ fontSize: '0.78em', display: 'block', marginTop: '0.2rem' }}>
-                Comfortable Hotel Accommodation in Suchindram
-              </span>
+              Our Comfort, Our Priority.
             </h1>
 
-            {/* Subtitle with Real Verified Information */}
+            {/* Concise Verified 2-Line Description */}
             <p
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: 'clamp(1rem, 1.3vw, 1.18rem)',
-                color: 'rgba(247, 244, 236, 0.9)',
+                fontSize: 'clamp(1.05rem, 1.35vw, 1.2rem)',
+                color: 'rgba(247, 244, 236, 0.92)',
                 fontWeight: 300,
                 lineHeight: 1.75,
                 maxWidth: '680px',
                 marginBottom: '2.25rem',
               }}
             >
-              Experience a clean, peaceful stay in Suchindram with air-conditioned guest rooms,
-              en-suite bathrooms, and 24/7 reception. Conveniently located on the main road
-              approximately 1 km from the sacred Thanumalayan Temple, close to ISKCON, and with quick
-              transit connectivity to Kanyakumari and Nagercoil.
+              Enjoy a comfortable stay at Hotel Lara International in Suchindram. Discover welcoming rooms,
+              essential comforts, and convenient access to nearby attractions.
             </p>
 
-            {/* CTAs: Direct Booking Dashboard Navigation & Room Exploration */}
+            {/* CTAs: Direct Booking Navigation & Room Exploration */}
             <div
               style={{
                 display: 'flex',
@@ -135,10 +130,10 @@ export default function Hero({ onBookClick, onExploreRooms }) {
                 className="btn btn-gold"
                 style={{
                   padding: '1rem 2.2rem',
-                  fontSize: '0.9rem',
+                  fontSize: '0.92rem',
                 }}
               >
-                <span>Reserve Stay</span>
+                <span>Book a Room</span>
                 <ArrowUpRight size={16} />
               </button>
 
@@ -147,7 +142,7 @@ export default function Hero({ onBookClick, onExploreRooms }) {
                 className="btn btn-outline-gold"
                 style={{
                   padding: '1rem 1.8rem',
-                  fontSize: '0.9rem',
+                  fontSize: '0.92rem',
                 }}
               >
                 <span>Explore Rooms</span>

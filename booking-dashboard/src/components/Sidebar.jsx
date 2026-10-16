@@ -7,10 +7,10 @@ import {
   Users,
   LogOut,
   BarChart3,
-  CheckCircle2,
-  Hotel
+  CheckCircle2
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import RotatingLogo from './RotatingLogo';
 
 export const Sidebar = ({ currentView, onViewChange }) => {
   const { user, logout } = useAuth();
@@ -28,8 +28,8 @@ export const Sidebar = ({ currentView, onViewChange }) => {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="sidebar-logo">
-          <Hotel size={22} />
+        <div className="sidebar-logo" style={{ background: 'transparent', padding: 0, overflow: 'visible' }}>
+          <RotatingLogo size={36} speed={24} theme="gold" idPrefix="sidebar" />
         </div>
         <div className="sidebar-title">
           <h1>HOTEL LARA</h1>

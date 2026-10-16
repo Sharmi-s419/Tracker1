@@ -45,10 +45,12 @@ export const RoomManagement = () => {
     setEditFormData({
       room_number: room.room_number,
       room_type: room.room_type,
+      bed_type: room.bed_type || 'Double Bed',
       floor: room.floor,
       capacity: room.capacity,
       base_price_per_night: room.base_price_per_night,
       status: room.status,
+      amenities: room.amenities || '',
       description: room.description || '',
     });
   };
@@ -127,12 +129,20 @@ export const RoomManagement = () => {
             </div>
 
             <div className="room-card-meta">
+              <span>{room.bed_type || 'Double Bed'}</span>
+              <span>•</span>
               <span>Capacity: {room.capacity} Guests</span>
               <span>•</span>
               <span className="room-card-tariff">
                 ₹{Number(room.base_price_per_night || 0).toLocaleString()} <span>/ night</span>
               </span>
             </div>
+
+            {room.amenities && (
+              <p style={{ fontSize: '0.75rem', color: '#B45309', background: '#FEF3C7', padding: '0.2rem 0.5rem', borderRadius: '4px', margin: '0.4rem 0' }}>
+                {room.amenities}
+              </p>
+            )}
 
             {room.description && (
               <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: 1.4 }}>
@@ -284,24 +294,52 @@ export const RoomManagement = () => {
               </div>
             </div>
 
-            <div className="form-group">
-              <label className="form-label">Operational Room Status</label>
-              <select
-                className="form-control"
-                value={editFormData.status}
-                onChange={(e) =>
-                  setEditFormData({ ...editFormData, status: e.target.value })
-                }
-              >
-                <option value="available">Available</option>
-                <option value="occupied">Occupied</option>
-                <option value="cleaning">Cleaning / Turnover</option>
-                <option value="maintenance">Under Maintenance</option>
-              </select>
+            <div className="form-grid-2">
+              <div className="form-group">
+                <label className="form-label">Bed Configuration</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={editFormData.bed_type}
+                  onChange={(e) =>
+                    setEditFormData({ ...editFormData, bed_type: e.target.value })
+                  }
+                  placeholder="e.g. Teakwood King Bed, Double Bed"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Operational Room Status</label>
+                <select
+                  className="form-control"
+                  value={editFormData.status}
+                  onChange={(e) =>
+                    setEditFormData({ ...editFormData, status: e.target.value })
+                  }
+                >
+                  <option value="available">Available</option>
+                  <option value="occupied">Occupied</option>
+                  <option value="cleaning">Cleaning / Turnover</option>
+                  <option value="maintenance">Under Maintenance</option>
+                </select>
+              </div>
             </div>
 
             <div className="form-group">
-              <label className="form-label">Description / Amenities</label>
+              <label className="form-label">Verified Amenities</label>
+              <input
+                type="text"
+                className="form-control"
+                value={editFormData.amenities}
+                onChange={(e) =>
+                  setEditFormData({ ...editFormData, amenities: e.target.value })
+                }
+                placeholder="e.g. Split Air Conditioning, Smart TV, En-suite Bathroom, WiFi"
+              />
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Room Description</label>
               <textarea
                 className="form-control"
                 rows="3"
@@ -309,7 +347,7 @@ export const RoomManagement = () => {
                 onChange={(e) =>
                   setEditFormData({ ...editFormData, description: e.target.value })
                 }
-                placeholder="Specific room details, bed types, view..."
+                placeholder="Specific room details, view, floor location..."
               />
             </div>
           </form>

@@ -172,3 +172,44 @@ class BookingAPITests(APITestCase):
         self.assertIn('occupied_rooms', resp.data)
         self.assertIn('today_checkins', resp.data)
         self.assertIn('today_checkouts', resp.data)
+
+    def test_unauthenticated_guest_can_create_booking(self):
+        """Guests booking online do not require staff JWT tokens."""
+        self.client.credentials()  # Clear auth token
+        payload = {
+            'room_id': self.room.id,
+            'guest_name': 'Meera Sundaram',
+            'guest_phone': '+919988776655',
+            'guest_email': 'meera@example.com',
+            'check_in_date': '2026-12-25',
+            'check_out_date': '2026-12-27',
+            'adults': 2,
+            'booking_source': 'website',
+            'special_requests': 'Near Thanumalayan temple, pilgrim visit'
+        }
+        resp = self.client.post('/api/bookings/', payload)
+        self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(resp.data['guest_name'], 'Meera Sundaram')
+        self.assertIn('HLI-', resp.data['booking_reference'])
+
+    def test_unauthenticated_user_cannot_access_staff_endpoints(self):
+        """Staff-only endpoints must reject unauthenticated requests."""
+        self.client.credentials()  # Clear auth token
+        resp1 = self.client.get('/api/dashboard/stats/')
+        self.assertEqual(resp1.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        resp2 = self.client.get('/api/bookings/')
+        self.assertEqual(resp2.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_invalid_checkout_date_fails_validation(self):
+        """Check-out on or before check-in must fail."""
+        payload = {
+            'room_id': self.room.id,
+            'guest_name': 'Invalid Dates',
+            'guest_phone': '+919111111111',
+            'check_in_date': '2026-12-20',
+            'check_out_date': '2026-12-19',
+        }
+        resp = self.client.post('/api/bookings/', payload)
+        self.assertEqual(resp.status_code, status.HTTP_400_BAD_REQUEST)
+
