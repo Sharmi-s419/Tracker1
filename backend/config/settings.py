@@ -14,7 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'hotel-lara-insecure-dev-secret-key-change-in-production')
+SECRET_KEY = os.getenv(
+    'SECRET_KEY',
+    os.getenv('DJANGO_SECRET_KEY', 'unsafe-development-key')
+)
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
 allowed_hosts_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
