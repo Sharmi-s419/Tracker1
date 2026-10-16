@@ -19,6 +19,9 @@ DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
 allowed_hosts_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
 ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_raw.split(',') if h.strip()]
+render_hostname = os.getenv('RENDER_EXTERNAL_HOSTNAME')
+if render_hostname and render_hostname not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(render_hostname)
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -116,6 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -148,3 +153,13 @@ cors_origins_raw = os.getenv(
 )
 CORS_ALLOWED_ORIGINS = [o.strip() for o in cors_origins_raw.split(',') if o.strip()]
 CORS_ALLOW_CREDENTIALS = True
+
+# Allow Vercel preview domains if enabled
+if os.getenv('CORS_ALLOW_VERCEL_PREVIEWS', 'True').lower() in ('true', '1'):
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https:\/\/.*\.vercel\.app$",
+    ]
+
+# Optional override to permit all origins if explicitly requested via environment variable
+if os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False').lower() in ('true', '1'):
+    CORS_ALLOW_ALL_ORIGINS = True

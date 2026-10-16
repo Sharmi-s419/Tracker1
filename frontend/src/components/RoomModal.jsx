@@ -1,15 +1,15 @@
 import React from 'react';
 import { X, Check, Phone, BedDouble, Users, ArrowRight } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
 
 export default function RoomModal({ room, onClose, onBookNow }) {
   if (!room) return null;
-  const bookingAppUrl = import.meta.env.VITE_BOOKING_APP_URL || 'http://localhost:3001';
 
   const handleBooking = () => {
     if (onBookNow) {
       onBookNow(room);
     } else {
-      window.location.href = bookingAppUrl;
+      window.location.href = getBookingAppUrl({ category: room.category });
     }
   };
 

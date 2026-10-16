@@ -1,6 +1,26 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+const getApiBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL;
+  if (!envUrl || !envUrl.trim()) {
+    if (import.meta.env.DEV) {
+      return 'http://localhost:8000/api';
+    }
+    console.error(
+      '[Configuration Error] VITE_API_BASE_URL environment variable is missing in production! ' +
+      'Please configure your Render backend URL (e.g. https://your-service.onrender.com/api) in Vercel Project Settings.'
+    );
+    return '/api';
+  }
+
+  let normalized = envUrl.trim().replace(/\/+$/, '');
+  if (!normalized.endsWith('/api')) {
+    normalized = `${normalized}/api`;
+  }
+  return normalized;
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,

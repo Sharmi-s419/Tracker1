@@ -1,15 +1,14 @@
 import React from 'react';
 import RotatingLogo from './RotatingLogo';
 import { ArrowUpRight, MapPin } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
 
 export default function Hero({ onBookClick, onExploreRooms }) {
-  const bookingAppUrl = import.meta.env.VITE_BOOKING_APP_URL || 'http://localhost:3001';
-
   const handleReserveStay = () => {
     if (onBookClick) {
       onBookClick();
     } else {
-      window.location.href = bookingAppUrl;
+      window.location.href = getBookingAppUrl();
     }
   };
 

@@ -9,10 +9,9 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import OpeningScreen from './components/OpeningScreen';
 import { Phone } from 'lucide-react';
+import { getBookingAppUrl } from './utils/bookingUrl';
 
 export default function App() {
-  const bookingAppUrl = import.meta.env.VITE_BOOKING_APP_URL || 'http://localhost:3001';
-
   const [showOpening, setShowOpening] = useState(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -41,8 +40,14 @@ export default function App() {
   };
 
   // Connects Book a Room and Reserve Stay directly to the separate booking dashboard
-  const handleBookClick = () => {
-    window.location.href = bookingAppUrl;
+  const handleBookClick = (roomOrParams) => {
+    let params = {};
+    if (roomOrParams && roomOrParams.category) {
+      params.category = roomOrParams.category;
+    } else if (typeof roomOrParams === 'object' && roomOrParams !== null) {
+      params = roomOrParams;
+    }
+    window.location.href = getBookingAppUrl(params);
   };
 
   const handleExploreRooms = () => {

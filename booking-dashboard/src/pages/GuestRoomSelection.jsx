@@ -43,6 +43,11 @@ export const GuestRoomSelection = ({ onStaffPortalClick }) => {
   const initialCheckIn = urlParams?.get('check_in') || todayStr;
   const initialCheckOut = urlParams?.get('check_out') || tomorrowStr;
   const initialGuests = parseInt(urlParams?.get('guests') || '2', 10);
+  const rawCat = (urlParams?.get('category') || urlParams?.get('room') || '').toLowerCase();
+  let initialType = 'all';
+  if (rawCat.includes('deluxe')) initialType = 'Deluxe';
+  else if (rawCat.includes('executive')) initialType = 'Executive';
+  else if (rawCat.includes('comfort')) initialType = 'Comfort';
 
   const [checkIn, setCheckIn] = useState(initialCheckIn);
   const [checkOut, setCheckOut] = useState(initialCheckOut);
@@ -55,7 +60,7 @@ export const GuestRoomSelection = ({ onStaffPortalClick }) => {
   const [error, setError] = useState('');
 
   // Filters
-  const [selectedType, setSelectedType] = useState('all');
+  const [selectedType, setSelectedType] = useState(initialType);
   const [maxBudget, setMaxBudget] = useState(5000);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RoomModal from './RoomModal';
 import { BedDouble, Users, Wind, ArrowRight, Tv, Check, Sparkles } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
 
 const roomsData = [
   {
@@ -85,7 +86,6 @@ const roomsData = [
 export default function Rooms({ onSelectRoomForBooking }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedRoomModal, setSelectedRoomModal] = useState(null);
-  const bookingAppUrl = import.meta.env.VITE_BOOKING_APP_URL || 'http://localhost:3001';
 
   const filteredRooms = activeFilter === 'all'
     ? roomsData
@@ -102,7 +102,7 @@ export default function Rooms({ onSelectRoomForBooking }) {
     if (onSelectRoomForBooking) {
       onSelectRoomForBooking(room);
     } else {
-      window.location.href = bookingAppUrl;
+      window.location.href = getBookingAppUrl({ category: room.category });
     }
   };
 

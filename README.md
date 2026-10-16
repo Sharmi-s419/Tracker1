@@ -140,21 +140,68 @@ npm run dev
 
 ## 4. Production Deployment Guidelines
 
-| Service | Root Directory | Build Command | Output | Port |
-| :--- | :--- | :--- | :--- | :--- |
-| **Frontend Website** | `frontend/` | `npm run build` | `dist/` | 3000 / Static CDN |
-| **Booking Dashboard** | `booking-dashboard/` | `npm run build` | `dist/` | 3001 / Static CDN |
-| **Django Backend** | `backend/` | `pip install -r requirements.txt` | N/A | 8000 / Gunicorn |
-| **Database** | PostgreSQL | `python manage.py migrate` | N/A | 5432 |
+Deploy the monorepo as **two separate Vercel projects** and one **Render Web Service**:
 
-### Environment Variables
-- **Frontend** (`frontend/.env`):
-  `VITE_BOOKING_APP_URL=https://booking.hotellarainternational.com`
-- **Booking Dashboard** (`booking-dashboard/.env`):
-  `VITE_API_BASE_URL=https://api.hotellarainternational.com/api`
-- **Backend** (`backend/.env`):
-  `DJANGO_SECRET_KEY=your-production-secret-key`
-  `DEBUG=False`
-  `ALLOWED_HOSTS=api.hotellarainternational.com,localhost`
-  `DATABASE_URL=postgresql://user:password@postgres-host:5432/hotel_lara_db`
-  `CORS_ALLOWED_ORIGINS=https://hotellarainternational.com,https://booking.hotellarainternational.com`
+```text
+GitHub: Tracker1 (Single Monorepo)
+├── Vercel Project 1: Public Website (Root Directory: frontend)
+├── Vercel Project 2: Booking Dashboard (Root Directory: booking-dashboard)
+└── Render Web Service: Django REST API (Root Directory: backend)
+```
+
+---
+
+### A. Deploy Public Website on Vercel (Project 1)
+
+1. Go to [Vercel Dashboard](https://vercel.com/new) → **Add New Project**.
+2. Select your repository: **`Tracker1`**.
+3. In **Project Configuration**:
+   - **Project Name**: `hotel-lara-international` (or your choice)
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: Click **Edit** and select **`frontend`**
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm install`
+4. In **Environment Variables**:
+   - `VITE_BOOKING_APP_URL`: `https://hotel-lara-booking-dashboard.vercel.app` (URL of Project 2)
+5. Click **Deploy**.
+
+---
+
+### B. Deploy Booking Dashboard on Vercel (Project 2)
+
+1. Go to [Vercel Dashboard](https://vercel.com/new) → **Add New Project**.
+2. Import the **same repository** (`Tracker1`) a second time.
+3. In **Project Configuration**:
+   - **Project Name**: `hotel-lara-booking-dashboard`
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: Click **Edit** and select **`booking-dashboard`**
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm install`
+4. In **Environment Variables**:
+   - `VITE_API_BASE_URL`: `https://hotel-lara-backend.onrender.com/api` (Render backend API URL)
+5. Click **Deploy**.
+
+---
+
+### C. Deploy Django Backend on Render
+
+1. Go to [Render Dashboard](https://dashboard.render.com/) → **New Web Service**.
+2. Connect your GitHub repository: **`Tracker1`**.
+3. In **Service Settings**:
+   - **Name**: `hotel-lara-backend`
+   - **Root Directory**: `backend`
+   - **Environment**: `Python 3`
+   - **Region**: Choose the closest region (e.g., Singapore / Frankfurt)
+   - **Branch**: `main`
+   - **Build Command**: `./build.sh` (or `pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate`)
+   - **Start Command**: `gunicorn config.wsgi:application`
+4. In **Environment Variables**:
+   - `PYTHON_VERSION`: `3.11.9` (or `3.12.0`)
+   - `DJANGO_SECRET_KEY`: `<Generate a random 50-character secret>`
+   - `DEBUG`: `False`
+   - `DATABASE_URL`: `<Render PostgreSQL Internal Connection String>`
+   - `CORS_ALLOWED_ORIGINS`: `https://hotel-lara-international.vercel.app,https://hotel-lara-booking-dashboard.vercel.app`
+   - `CORS_ALLOW_VERCEL_PREVIEWS`: `True`
+5. Click **Create Web Service**.

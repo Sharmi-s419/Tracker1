@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import RotatingLogo from './RotatingLogo';
 import { Phone, Menu, X, ArrowUpRight } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
 
 export default function Header({ onBookClick, onReplayOpening }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const bookingAppUrl = import.meta.env.VITE_BOOKING_APP_URL || 'http://localhost:3001';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +47,7 @@ export default function Header({ onBookClick, onReplayOpening }) {
     if (onBookClick) {
       onBookClick();
     } else {
-      window.location.href = bookingAppUrl;
+      window.location.href = getBookingAppUrl();
     }
   };
 

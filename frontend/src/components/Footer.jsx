@@ -1,10 +1,10 @@
 import React from 'react';
 import RotatingLogo from './RotatingLogo';
 import { Phone, Mail, MapPin, ArrowUp, Navigation, Calendar, Heart } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
 
 export default function Footer({ onReplayOpening }) {
   const currentYear = new Date().getFullYear();
-  const bookingAppUrl = import.meta.env.VITE_BOOKING_APP_URL || 'http://localhost:3001';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -137,7 +137,7 @@ export default function Footer({ onReplayOpening }) {
               ))}
               <li>
                 <a
-                  href={bookingAppUrl}
+                  href={getBookingAppUrl()}
                   style={{
                     fontSize: '0.88rem',
                     color: 'var(--color-gold-bright)',
@@ -210,7 +210,7 @@ export default function Footer({ onReplayOpening }) {
               Check availability for your dates and reserve directly through our secure hotel booking console.
             </p>
             <a
-              href={bookingAppUrl}
+              href={getBookingAppUrl()}
               className="btn btn-gold"
               style={{ width: '100%', padding: '0.75rem', fontSize: '0.85rem', textAlign: 'center', display: 'block' }}
             >
