@@ -107,7 +107,7 @@ export const App = () => {
             </button>
 
             <a
-              href="http://localhost:3000"
+              href={import.meta.env.VITE_PUBLIC_WEBSITE_URL || 'http://localhost:3000'}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline btn-sm"

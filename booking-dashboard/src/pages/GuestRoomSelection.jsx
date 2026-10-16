@@ -211,7 +211,7 @@ export const GuestRoomSelection = ({ onStaffPortalClick }) => {
 
           <div className="nav-links-right">
             <a
-              href="http://localhost:3000"
+              href={import.meta.env.VITE_PUBLIC_WEBSITE_URL || 'http://localhost:3000'}
               className="btn btn-outline btn-sm"
               style={{ fontSize: '0.82rem' }}
             >
