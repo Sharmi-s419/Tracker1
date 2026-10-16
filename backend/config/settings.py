@@ -165,10 +165,14 @@ CORS_ALLOWED_ORIGINS = [o.strip() for o in cors_origins_raw.split(',') if o.stri
 CORS_ALLOW_CREDENTIALS = True
 
 # Allow Vercel preview domains if enabled
-if os.getenv('CORS_ALLOW_VERCEL_PREVIEWS', 'True').lower() in ('true', '1'):
+if os.getenv("CORS_ALLOW_VERCEL_PREVIEWS", "False").lower() in ("true", "1"):
     CORS_ALLOWED_ORIGIN_REGEXES = [
-        r"^https:\/\/.*\.vercel\.app$",
+        r"^https://.*\.vercel\.app$",
     ]
+
+# Allow all origins only when explicitly enabled
+if os.getenv("CORS_ALLOW_ALL_ORIGINS", "False").lower() in ("true", "1"):
+    CORS_ALLOW_ALL_ORIGINS = True
 
 # Optional override to permit all origins if explicitly requested via environment variable
 if os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False').lower() in ('true', '1'):
