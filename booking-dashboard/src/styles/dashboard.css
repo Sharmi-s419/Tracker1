@@ -914,3 +914,108 @@ body {
   }
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+/* Admin Room Management Grid & Photo Cards */
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.room-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 28, 53, 0.08);
+  border-color: #C49A45;
+}
+
+.room-card-photo-header {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background-color: #0F172A;
+  overflow: hidden;
+}
+
+.room-card-photo-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.room-card:hover .room-card-photo-header img {
+  transform: scale(1.04);
+}
+
+.room-card-photo-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(16, 28, 53, 0.88);
+  backdrop-filter: blur(4px);
+  color: #C49A45;
+  border: 1px solid rgba(196, 154, 69, 0.5);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.room-card-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.room-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.room-card-number {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #C49A45;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.room-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #64748B;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.room-card-tariff {
+  font-weight: 700;
+  color: #101C35;
+}
+
+
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f

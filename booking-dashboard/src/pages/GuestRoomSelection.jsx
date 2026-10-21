@@ -17,6 +17,13 @@ import {
 } from 'lucide-react';
 import { roomsApi, bookingsApi } from '../api/client';
 import StatusBadge from '../components/StatusBadge';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import { getRoomDisplayName, formatRoomNumber, getNormalizedFloor, FLOORS_CONFIG, resolveRoomPhotoUrl } from '../constants/roomNames';
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
 // Real hotel photography mapping for verified room types
 const roomPhotoMap = {
@@ -26,7 +33,18 @@ const roomPhotoMap = {
   'default': '/images/hotel-lara-deluxe-blue-room.webp',
 };
 
+<<<<<<< HEAD
 const getRoomImage = (roomType = '') => {
+=======
+<<<<<<< HEAD
+const getRoomImage = (room) => {
+  const resolved = resolveRoomPhotoUrl(room);
+  if (resolved) return resolved;
+  const roomType = typeof room === 'object' ? (room?.room_type || '') : String(room || '');
+=======
+const getRoomImage = (roomType = '') => {
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
   const norm = roomType.toLowerCase();
   if (norm.includes('deluxe') || norm.includes('king')) return roomPhotoMap['deluxe'];
   if (norm.includes('executive') || norm.includes('marble')) return roomPhotoMap['executive'];
@@ -443,6 +461,181 @@ export const GuestRoomSelection = ({ onStaffPortalClick }) => {
                 </button>
               </div>
             ) : (
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+                {FLOORS_CONFIG.map((floor) => {
+                  const floorRooms = filteredRooms.filter((r) => getNormalizedFloor(r) === floor.key);
+                  if (floorRooms.length === 0) return null;
+
+                  return (
+                    <section key={floor.key} aria-label={floor.title}>
+                      {/* Floor Header Bar */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          flexWrap: 'wrap',
+                          gap: '0.75rem',
+                          marginBottom: '1rem',
+                          paddingBottom: '0.75rem',
+                          borderBottom: '2px solid var(--border-subtle, #E6DDD3)',
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                          <span
+                            style={{
+                              backgroundColor: '#101C35',
+                              color: '#C49A45',
+                              padding: '0.3rem 0.75rem',
+                              borderRadius: '6px',
+                              fontWeight: 700,
+                              fontSize: '0.78rem',
+                              letterSpacing: '0.05em',
+                              textTransform: 'uppercase',
+                              border: '1px solid #C49A45',
+                            }}
+                          >
+                            {floor.badge}
+                          </span>
+                          <div>
+                            <h3
+                              style={{
+                                fontFamily: "'Cinzel', Georgia, serif",
+                                fontSize: '1.25rem',
+                                color: '#101C35',
+                                margin: 0,
+                                fontWeight: 700,
+                              }}
+                            >
+                              {floor.title}
+                            </h3>
+                            <span style={{ fontSize: '0.78rem', color: 'var(--text-muted-brown)' }}>
+                              {floor.subtitle}
+                            </span>
+                          </div>
+                        </div>
+                        <span
+                          style={{
+                            fontSize: '0.8rem',
+                            fontWeight: 600,
+                            color: 'var(--text-muted-brown)',
+                            backgroundColor: '#FAF7F1',
+                            padding: '0.25rem 0.75rem',
+                            borderRadius: '16px',
+                            border: '1px solid #E6DDD3',
+                          }}
+                        >
+                          {floorRooms.length} {floorRooms.length === 1 ? 'room' : 'rooms'}
+                        </span>
+                      </div>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                        {floorRooms.map((room) => {
+                          const isAvailable = availableRoomIds === null || availableRoomIds.has(room.id);
+                          const price = parseFloat(room.base_price_per_night) || 0;
+                          const roomImage = getRoomImage(room);
+                          const formattedNum = formatRoomNumber(room.room_number);
+
+                          return (
+                            <article key={room.id} className="editorial-room-card">
+                              {/* Left: Professional Photograph */}
+                              <div className="room-card-photo">
+                                <img src={roomImage} alt={`Room ${formattedNum} - ${getRoomDisplayName(room)}`} loading="lazy" />
+                                <div className="room-badge-top">
+                                  Room {formattedNum} • {floor.title}
+                                </div>
+                              </div>
+
+                              {/* Right: Room Details & Actions */}
+                              <div className="room-card-details">
+                                <div className="room-title-area">
+                                  <div>
+                                    <h3 className="room-name">{getRoomDisplayName(room)}</h3>
+                                    <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#C49A45', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.2rem' }}>
+                                      {room.room_type}
+                                    </div>
+                                    <span style={{ fontSize: '0.78rem', color: 'var(--text-muted-brown)' }}>
+                                      Hotel Lara International • Room #{formattedNum} • {floor.title}
+                                    </span>
+                                  </div>
+
+                                  <div>
+                                    {isAvailable ? (
+                                      <span className="badge badge-available">✓ Available</span>
+                                    ) : (
+                                      <span className="badge badge-occupied">Booked for Dates</span>
+                                    )}
+                                  </div>
+                                </div>
+
+                                {/* Specs Row */}
+                                <div className="room-specs-row">
+                                  <span>{room.bed_type || (formattedNum === '101' || formattedNum === '201' ? 'Twin Beds' : 'Double Bed')}</span>
+                                  <span>•</span>
+                                  <span>Max Capacity: {room.capacity} Guests</span>
+                                  <span>•</span>
+                                  <span>Attached Ensuite Bath</span>
+                                  <span>•</span>
+                                  <span>Split Air-Conditioned</span>
+                                </div>
+
+                                {/* Description */}
+                                <p className="room-description">
+                                  {room.description ||
+                                    'Comfortable, impeccably maintained guest room equipped with quality bedding, split AC climate control, and attached washroom. Ideal for temple pilgrims and travelers.'}
+                                </p>
+
+                                {/* Amenities Pills */}
+                                <div className="room-amenities-pills">
+                                  <span className="amenity-pill">Split AC</span>
+                                  <span className="amenity-pill">En-suite Bath</span>
+                                  <span className="amenity-pill">Clean Linen</span>
+                                  <span className="amenity-pill">Daily Housekeeping</span>
+                                  <span className="amenity-pill">Hot Water</span>
+                                </div>
+
+                                {/* Price & Action Row */}
+                                <div className="room-pricing-action">
+                                  <div className="price-tag">
+                                    {price > 0 ? (
+                                      <>
+                                        <div className="price-amount">₹{price.toLocaleString()}</div>
+                                        <span className="price-sub">per night (taxes included)</span>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <div className="price-amount" style={{ fontSize: '1.15rem' }}>Direct Best Tariff</div>
+                                        <span className="price-sub">Guaranteed Direct Rate</span>
+                                      </>
+                                    )}
+                                  </div>
+
+                                  <div>
+                                    <button
+                                      onClick={() => handleOpenBooking(room)}
+                                      disabled={!isAvailable}
+                                      className={isAvailable ? 'btn btn-burgundy' : 'btn btn-outline'}
+                                      style={{ padding: '0.65rem 1.4rem' }}
+                                    >
+                                      <span>{isAvailable ? 'Select Room' : 'Unavailable'}</span>
+                                      <ArrowRight size={16} />
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  );
+                })}
+              </div>
+=======
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
               filteredRooms.map((room) => {
                 const isAvailable = availableRoomIds === null || availableRoomIds.has(room.id);
                 const price = parseFloat(room.base_price_per_night) || 0;
@@ -533,6 +726,10 @@ export const GuestRoomSelection = ({ onStaffPortalClick }) => {
                   </article>
                 );
               })
+<<<<<<< HEAD
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
             )}
           </main>
         </div>
@@ -544,7 +741,15 @@ export const GuestRoomSelection = ({ onStaffPortalClick }) => {
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '620px' }}>
             <div className="modal-header">
               <div>
+<<<<<<< HEAD
                 <h3>Reserve Room {selectedRoom.room_number}</h3>
+=======
+<<<<<<< HEAD
+                <h3>Reserve Room {formatRoomNumber(selectedRoom.room_number)} — {getRoomDisplayName(selectedRoom)}</h3>
+=======
+                <h3>Reserve Room {selectedRoom.room_number}</h3>
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                 <span style={{ fontSize: '0.78rem', color: 'var(--text-muted-brown)' }}>
                   {selectedRoom.room_type} • {nights} Night(s) ({checkIn} → {checkOut})
                 </span>
@@ -582,7 +787,15 @@ export const GuestRoomSelection = ({ onStaffPortalClick }) => {
                       </span>
                     </div>
                     <div style={{ marginBottom: '0.5rem' }}>
+<<<<<<< HEAD
                       <strong>Room:</strong> Room {selectedRoom.room_number} ({selectedRoom.room_type})
+=======
+<<<<<<< HEAD
+                      <strong>Room:</strong> Room {selectedRoom.room_number} — {getRoomDisplayName(selectedRoom)} ({selectedRoom.room_type})
+=======
+                      <strong>Room:</strong> Room {selectedRoom.room_number} ({selectedRoom.room_type})
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                     </div>
                     <div style={{ marginBottom: '0.5rem' }}>
                       <strong>Dates:</strong> {checkIn} to {checkOut} ({nights} nights)

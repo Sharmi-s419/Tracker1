@@ -1,6 +1,13 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 from django.utils.dateparse import parse_date
 import datetime
 
@@ -10,6 +17,13 @@ from .serializers import RoomSerializer, RoomStatusUpdateSerializer
 class RoomListCreateView(generics.ListCreateAPIView):
     """List all 14 rooms or add/configure rooms."""
     serializer_class = RoomSerializer
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
     def get_permissions(self):
         if self.request.method == 'GET':
@@ -30,12 +44,26 @@ class RoomDetailUpdateView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update, or remove a room record."""
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
     def get_permissions(self):
         if self.request.method == 'GET':
             return [permissions.AllowAny()]
         return [permissions.IsAuthenticated()]
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 class RoomStatusUpdateView(APIView):
     """Quick update of room housekeeping/maintenance status (available, cleaning, maintenance, occupied)."""
     permission_classes = [permissions.IsAuthenticated]
@@ -105,7 +133,15 @@ class RoomAvailabilityView(APIView):
             id__in=occupied_room_ids
         ).order_by('room_number')
 
+<<<<<<< HEAD
         serializer = RoomSerializer(available_rooms, many=True)
+=======
+<<<<<<< HEAD
+        serializer = RoomSerializer(available_rooms, many=True, context={'request': request})
+=======
+        serializer = RoomSerializer(available_rooms, many=True)
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
         return Response({
             'check_in': check_in_str,
             'check_out': check_out_str,

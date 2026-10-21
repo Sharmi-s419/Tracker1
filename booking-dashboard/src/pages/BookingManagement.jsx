@@ -14,6 +14,13 @@ import {
 import { bookingsApi, roomsApi } from '../api/client';
 import StatusBadge from '../components/StatusBadge';
 import Modal from '../components/Modal';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import { getRoomDisplayName } from '../constants/roomNames';
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
 export const BookingManagement = ({ onNewBooking, initialSelectedBookingId }) => {
   const [bookings, setBookings] = useState([]);
@@ -229,7 +236,15 @@ export const BookingManagement = ({ onNewBooking, initialSelectedBookingId }) =>
                   <option value="">All 14 Rooms</option>
                   {rooms.map((r) => (
                     <option key={r.id} value={r.id}>
+<<<<<<< HEAD
                       Room {r.room_number} ({r.room_type})
+=======
+<<<<<<< HEAD
+                      Room {r.room_number} — {getRoomDisplayName(r)} ({r.room_type})
+=======
+                      Room {r.room_number} ({r.room_type})
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                     </option>
                   ))}
                 </select>
@@ -290,7 +305,18 @@ export const BookingManagement = ({ onNewBooking, initialSelectedBookingId }) =>
                       <td style={{ fontWeight: 700, color: '#101C35' }}>
                         {b.booking_reference}
                       </td>
+<<<<<<< HEAD
                       <td style={{ fontWeight: 600 }}>Room {b.room_number}</td>
+=======
+<<<<<<< HEAD
+                      <td>
+                        <div style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</div>
+                        <div style={{ fontSize: '0.78rem', color: '#8C6D23', fontWeight: 600 }}>{getRoomDisplayName(b)}</div>
+                      </td>
+=======
+                      <td style={{ fontWeight: 600 }}>Room {b.room_number}</td>
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                       <td>
                         <div style={{ fontWeight: 600 }}>{b.guest_name}</div>
                         <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{b.guest_phone}</div>
@@ -375,7 +401,15 @@ export const BookingManagement = ({ onNewBooking, initialSelectedBookingId }) =>
                 <AlertTriangle size={18} /> Confirm Reservation Cancellation
               </h4>
               <p style={{ fontSize: '0.85rem', color: '#7F1D1D', marginBottom: '1rem' }}>
+<<<<<<< HEAD
                 Cancelling this reservation will immediately restore Room {selectedBooking.room_number || selectedBooking.room?.room_number} back to active inventory for other guests.
+=======
+<<<<<<< HEAD
+                Cancelling this reservation will immediately restore Room {selectedBooking.room_number || selectedBooking.room?.room_number} ({getRoomDisplayName(selectedBooking)}) back to active inventory for other guests.
+=======
+                Cancelling this reservation will immediately restore Room {selectedBooking.room_number || selectedBooking.room?.room_number} back to active inventory for other guests.
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
               </p>
               <div className="form-group">
                 <label className="form-label">Cancellation Reason</label>
@@ -409,8 +443,21 @@ export const BookingManagement = ({ onNewBooking, initialSelectedBookingId }) =>
                   <div style={{ fontWeight: 700, fontSize: '1.15rem', color: '#101C35' }}>
                     Room {selectedBooking.room_details?.room_number || selectedBooking.room_number}
                   </div>
+<<<<<<< HEAD
                   <div style={{ fontSize: '0.8rem', color: '#475569' }}>
                     {selectedBooking.room_details?.room_type || 'Standard'}
+=======
+<<<<<<< HEAD
+                  <div style={{ fontSize: '0.9rem', color: '#8C6D23', fontWeight: 700 }}>
+                    {getRoomDisplayName(selectedBooking.room_details || selectedBooking)}
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#475569' }}>
+                    {selectedBooking.room_details?.room_type || selectedBooking.room_type || 'Standard Room'}
+=======
+                  <div style={{ fontSize: '0.8rem', color: '#475569' }}>
+                    {selectedBooking.room_details?.room_type || 'Standard'}
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                   </div>
                 </div>
 

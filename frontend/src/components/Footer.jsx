@@ -80,12 +80,24 @@ export default function Footer({ onReplayOpening }) {
             </div>
 
             <p style={{ fontSize: '0.88rem', lineHeight: 1.7, marginBottom: '1.5rem', color: 'rgba(255, 255, 255, 0.7)' }}>
+<<<<<<< HEAD
               Comfortable, peaceful accommodation situated on Nalloor Road in Suchindram, Kanyakumari.
+=======
+              Comfortable, peaceful accommodation situated on the main corridor in Suchindram, Kanyakumari.
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
               Offering 14 well-maintained guest rooms with split air-conditioning and 24/7 hospitality.
             </p>
 
             <a
+<<<<<<< HEAD
               href="https://maps.app.goo.gl/oAHJzUma2axes68P6"
+=======
+<<<<<<< HEAD
+              href="https://maps.app.goo.gl/oAHJzUma2axes68P6"
+=======
+              href="https://maps.app.goo.gl/Tk3uEur3cttu12NZA?g_st=aw"
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline-gold"
@@ -168,8 +180,19 @@ export default function Footer({ onReplayOpening }) {
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                 <MapPin size={18} color="#C6A15B" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <span>
+<<<<<<< HEAD
                   Nalloor Rd, Suchindrum, Eraviputhoor, <br />
                   Tamil Nadu — 629704.
+=======
+<<<<<<< HEAD
+                  Nalloor Rd, Suchindrum, <br />
+                  Eraviputhoor, Tamil Nadu — 629704.
+=======
+                  Main Road (Near Thanumalayan Temple & ISKCON), <br />
+                  Suchindram, Kanyakumari District, <br />
+                  Tamil Nadu — 629704.
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                 </span>
               </div>
 

@@ -1,8 +1,54 @@
 import React, { useState } from 'react';
 import RoomModal from './RoomModal';
+<<<<<<< HEAD
 import { BedDouble, Users, Wind, ArrowRight, Tv, Check, Sparkles } from 'lucide-react';
 import { getBookingAppUrl } from '../utils/bookingUrl';
 
+=======
+<<<<<<< HEAD
+import { BedDouble, Users, ArrowRight, Check } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
+
+export const resolveFrontendRoomPhoto = (room) => {
+  if (!room) return null;
+  const num = String(room.room_number || room.number || '').trim();
+
+  // 1. If backend returned a photo_url or image
+  const rawUrl = room.photo_url || (typeof room.image === 'string' ? room.image : null) || room.image_url;
+  if (rawUrl && typeof rawUrl === 'string' && rawUrl.trim()) {
+    const trimmed = rawUrl.trim();
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
+    const cleanPath = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+    const backendOrigin = apiBase.replace(/\/api\/?$/, '');
+    if (cleanPath.startsWith('/media/')) {
+      return `${backendOrigin}${cleanPath}`;
+    }
+    if (cleanPath.startsWith('/images/')) {
+      return cleanPath;
+    }
+    return `${backendOrigin}/media/${trimmed.replace(/^room_photos\//, 'room_photos/')}`;
+  }
+
+  // 2. Fallback to bundled room photo matching exact room number
+  const bundled = {
+    '001': '/images/rooms/001.jpg',
+    '002': '/images/rooms/002.jpg',
+    '101': '/images/rooms/101.png',
+    '102': '/images/rooms/102.jpg',
+    '103': '/images/rooms/103.jpg',
+    '104': '/images/rooms/104.jpg',
+  };
+  if (num && bundled[num]) return bundled[num];
+  return null;
+};
+
+=======
+import { BedDouble, Users, Wind, ArrowRight, Tv, Check, Sparkles } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
+
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 const roomsData = [
   {
     id: 'deluxe-ac-king',
@@ -83,6 +129,55 @@ const roomsData = [
   }
 ];
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+export const FLOOR_GROUPS = [
+  {
+    key: 'ground',
+    badge: 'Ground Floor',
+    title: 'Ground Floor',
+    subtitle: 'Convenient ground level access — 2 Rooms',
+    rooms: [
+      { number: '001', name: 'Standard Double Room', floor: 'Ground Floor', bed: 'Double Bed' },
+      { number: '002', name: 'Standard Double Room', floor: 'Ground Floor', bed: 'Double Bed' },
+    ],
+  },
+  {
+    key: 'first',
+    badge: 'First Floor',
+    title: 'First Floor',
+    subtitle: 'Quiet level 1 accommodations — 6 Rooms',
+    rooms: [
+      { number: '101', name: 'Twin Room', floor: 'First Floor', bed: 'Twin Beds' },
+      { number: '102', name: 'Standard Double Room', floor: 'First Floor', bed: 'Double Bed' },
+      { number: '103', name: 'Standard Double Room', floor: 'First Floor', bed: 'Double Bed' },
+      { number: '104', name: 'Standard Double Room', floor: 'First Floor', bed: 'Double Bed' },
+      { number: '105', name: 'Standard Double Room', floor: 'First Floor', bed: 'Double Bed' },
+      { number: '106', name: 'Standard Double Room', floor: 'First Floor', bed: 'Double Bed' },
+    ],
+  },
+  {
+    key: 'second',
+    badge: 'Second Floor',
+    title: 'Second Floor',
+    subtitle: 'Panoramic upper level rooms — 6 Rooms',
+    rooms: [
+      { number: '201', name: 'Twin Room', floor: 'Second Floor', bed: 'Twin Beds' },
+      { number: '202', name: 'Standard Double Room', floor: 'Second Floor', bed: 'Double Bed' },
+      { number: '203', name: 'Standard Double Room', floor: 'Second Floor', bed: 'Double Bed' },
+      { number: '204', name: 'Standard Double Room', floor: 'Second Floor', bed: 'Double Bed' },
+      { number: '205', name: 'Standard Double Room', floor: 'Second Floor', bed: 'Double Bed' },
+      { number: '206', name: 'Standard Double Room', floor: 'Second Floor', bed: 'Double Bed' },
+    ],
+  },
+];
+
+export const ALL_14_ROOMS = FLOOR_GROUPS.flatMap((g) => g.rooms);
+
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 export default function Rooms({ onSelectRoomForBooking }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedRoomModal, setSelectedRoomModal] = useState(null);

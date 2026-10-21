@@ -65,7 +65,22 @@ export const roomsApi = {
   getAll: (params) => apiClient.get('/rooms/', { params }),
   getAvailable: (checkIn, checkOut) =>
     apiClient.get('/rooms/available/', { params: { check_in: checkIn, check_out: checkOut } }),
+<<<<<<< HEAD
   update: (id, data) => apiClient.patch(`/rooms/${id}/`, data),
+=======
+<<<<<<< HEAD
+  update: (id, data) => {
+    if (typeof FormData !== 'undefined' && data instanceof FormData) {
+      return apiClient.patch(`/rooms/${id}/`, data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+    }
+    return apiClient.patch(`/rooms/${id}/`, data);
+  },
+=======
+  update: (id, data) => apiClient.patch(`/rooms/${id}/`, data),
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
   updateStatus: (id, status) => apiClient.patch(`/rooms/${id}/status/`, { status }),
 };
 

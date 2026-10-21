@@ -49,8 +49,17 @@ export default function About() {
               }}
             >
               <img
+<<<<<<< HEAD
                 src="/images/hotel-lara-facade-exterior.webp"
                 alt="Hotel Lara International exterior facade and front entrance on Nalloor Road, Suchindrum"
+=======
+<<<<<<< HEAD
+                src="/images/hotel-lara-facade-exterior.png"
+=======
+                src="/images/hotel-lara-facade-exterior.webp"
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+                alt="Hotel Lara International exterior facade and front entrance on main road Suchindram"
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                 loading="lazy"
                 style={{
                   width: '100%',
@@ -101,7 +110,11 @@ export default function About() {
 
             <p style={{ color: 'var(--color-charcoal-muted)', fontSize: '0.98rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
               <strong>Hotel Lara International</strong> provides comfortable, air-conditioned rooms designed
+<<<<<<< HEAD
               for travelers seeking a peaceful stay in Suchindram. Located on Nalloor Road, Suchindrum (Eraviputhoor), the hotel offers
+=======
+              for travelers seeking a peaceful stay in Suchindram. Located on the main road, the hotel offers
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
               direct vehicular access, on-site parking, and immediate proximity to the sacred
               Thanumalayan Temple and ISKCON Kanyakumari.
             </p>

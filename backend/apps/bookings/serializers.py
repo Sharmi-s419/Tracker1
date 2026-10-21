@@ -11,6 +11,13 @@ from .models import Booking, BookingStatus, BookingSource, PaymentStatus
 
 class BookingListSerializer(serializers.ModelSerializer):
     room_number = serializers.CharField(source='room.room_number', read_only=True)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    room_name = serializers.CharField(source='room.display_name', read_only=True)
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
     room_type = serializers.CharField(source='room.room_type', read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
     payment_status_display = serializers.CharField(source='get_payment_status_display', read_only=True)
@@ -23,6 +30,13 @@ class BookingListSerializer(serializers.ModelSerializer):
             'booking_reference',
             'room',
             'room_number',
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            'room_name',
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
             'room_type',
             'guest',
             'guest_name',
@@ -47,6 +61,15 @@ class BookingListSerializer(serializers.ModelSerializer):
 
 class BookingDetailSerializer(serializers.ModelSerializer):
     room_details = RoomSerializer(source='room', read_only=True)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    room_number = serializers.CharField(source='room.room_number', read_only=True)
+    room_name = serializers.CharField(source='room.display_name', read_only=True)
+    room_type = serializers.CharField(source='room.room_type', read_only=True)
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
     guest_details = GuestSerializer(source='guest', read_only=True)
     status_display = serializers.CharField(source='get_status_display', read_only=True)
     payment_status_display = serializers.CharField(source='get_payment_status_display', read_only=True)
@@ -59,6 +82,15 @@ class BookingDetailSerializer(serializers.ModelSerializer):
             'id',
             'booking_reference',
             'room',
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            'room_number',
+            'room_name',
+            'room_type',
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
             'room_details',
             'guest',
             'guest_details',
@@ -99,6 +131,15 @@ class BookingCreateUpdateSerializer(serializers.ModelSerializer):
     guest_phone = serializers.CharField(required=True)
     guest_email = serializers.EmailField(required=False, allow_blank=True, default='')
     room_id = serializers.IntegerField(required=True, write_only=True)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    room_number = serializers.CharField(source='room.room_number', read_only=True)
+    room_name = serializers.CharField(source='room.display_name', read_only=True)
+    room_type = serializers.CharField(source='room.room_type', read_only=True)
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
     class Meta:
         model = Booking
@@ -106,6 +147,15 @@ class BookingCreateUpdateSerializer(serializers.ModelSerializer):
             'id',
             'booking_reference',
             'room_id',
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            'room_number',
+            'room_name',
+            'room_type',
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
             'guest_id',
             'guest_name',
             'guest_phone',
@@ -122,7 +172,15 @@ class BookingCreateUpdateSerializer(serializers.ModelSerializer):
             'payment_notes',
             'special_requests',
         ]
+<<<<<<< HEAD
         read_only_fields = ['id', 'booking_reference']
+=======
+<<<<<<< HEAD
+        read_only_fields = ['id', 'booking_reference', 'room_number', 'room_name', 'room_type']
+=======
+        read_only_fields = ['id', 'booking_reference']
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
     def validate(self, attrs):
         check_in = attrs.get('check_in_date') or (self.instance.check_in_date if self.instance else None)

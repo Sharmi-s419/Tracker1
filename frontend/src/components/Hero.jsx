@@ -32,7 +32,15 @@ export default function Hero({ onBookClick, onExploreRooms }) {
         style={{
           position: 'absolute',
           inset: 0,
+<<<<<<< HEAD
           backgroundImage: "url('/images/hotel-lara-hero.webp')",
+=======
+<<<<<<< HEAD
+          backgroundImage: "url('/images/hotel-lara-hero.png')",
+=======
+          backgroundImage: "url('/images/hotel-lara-hero.webp')",
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
+>>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
           backgroundPosition: 'center 42%',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
