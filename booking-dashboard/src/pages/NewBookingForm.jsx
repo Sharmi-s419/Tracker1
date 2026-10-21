@@ -13,13 +13,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { roomsApi, bookingsApi } from '../api/client';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 import { getRoomDisplayName, formatRoomNumber, resolveRoomPhotoUrl } from '../constants/roomNames';
-=======
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
 export const NewBookingForm = ({ onBookingCreated, onCancel }) => {
   const todayStr = new Date().toISOString().split('T')[0];
@@ -172,15 +166,7 @@ export const NewBookingForm = ({ onBookingCreated, onCancel }) => {
               Reservation Confirmed: {success.booking_reference}
             </div>
             <div style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>
-<<<<<<< HEAD
-              Guest {success.guest_name} assigned to Room {success.room_number || formData.room_id} for{' '}
-=======
-<<<<<<< HEAD
-              Guest {success.guest_name} assigned to Room {success.room_number || formData.room_id} — {getRoomDisplayName(success.room_name || success.room_number || formData.room_id)} for{' '}
-=======
-              Guest {success.guest_name} assigned to Room {success.room_number || formData.room_id} for{' '}
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
+Guest {success.guest_name} assigned to Room {success.room_number || formData.room_id} — {getRoomDisplayName(success.room_name || success.room_number || formData.room_id)} for{' '}
               {success.number_of_nights || nights} nights.
             </div>
           </div>
@@ -272,14 +258,8 @@ export const NewBookingForm = ({ onBookingCreated, onCancel }) => {
                 >
                   {availableRooms.map((r) => {
                     const isSelected = formData.room_id === String(r.id);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
                     const photo = resolveRoomPhotoUrl(r);
                     const formattedNum = formatRoomNumber(r.room_number);
-=======
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                     return (
                       <div
                         key={r.id}
@@ -288,9 +268,6 @@ export const NewBookingForm = ({ onBookingCreated, onCancel }) => {
                           border: isSelected ? '2px solid #C6A15B' : '1px solid #E2E8F0',
                           backgroundColor: isSelected ? 'rgba(198, 161, 91, 0.08)' : '#FFFFFF',
                           borderRadius: '10px',
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
                           overflow: 'hidden',
                           cursor: 'pointer',
                           transition: 'all 0.15s ease',
@@ -319,28 +296,6 @@ export const NewBookingForm = ({ onBookingCreated, onCancel }) => {
                           <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#101C35', marginTop: '0.35rem' }}>
                             ₹{Number(r.base_price_per_night || 0).toLocaleString()} <span style={{ fontSize: '0.7rem', color: '#64748B', fontWeight: 400 }}>/ nt</span>
                           </div>
-=======
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
-                          padding: '0.85rem',
-                          cursor: 'pointer',
-                          transition: 'all 0.15s ease',
-                        }}
-                      >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span style={{ fontWeight: 700, fontSize: '1.05rem', color: '#101C35' }}>
-                            Room {r.room_number}
-                          </span>
-                          <span style={{ fontSize: '0.72rem', color: '#10B981', fontWeight: 600 }}>Free</span>
-                        </div>
-                        <div style={{ fontSize: '0.78rem', color: '#475569', marginTop: '0.2rem' }}>
-                          {r.room_type}
-                        </div>
-                        <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#101C35', marginTop: '0.4rem' }}>
-                          ₹{Number(r.base_price_per_night || 0).toLocaleString()} <span style={{ fontSize: '0.7rem', color: '#64748B', fontWeight: 400 }}>/ nt</span>
-<<<<<<< HEAD
-=======
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                         </div>
                       </div>
                     );

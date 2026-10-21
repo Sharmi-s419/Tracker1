@@ -14,13 +14,7 @@ import {
 } from 'lucide-react';
 import { dashboardApi, bookingsApi } from '../api/client';
 import StatusBadge from '../components/StatusBadge';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 import { getRoomDisplayName, formatRoomNumber } from '../constants/roomNames';
-=======
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
 
 export const DashboardOverview = ({ onNavigate }) => {
   const [stats, setStats] = useState(null);
@@ -268,18 +262,10 @@ export const DashboardOverview = ({ onNavigate }) => {
                       {searchResults.map((b) => (
                         <tr key={b.id}>
                           <td style={{ fontWeight: 600, color: '#101C35' }}>{b.booking_reference}</td>
-<<<<<<< HEAD
-                          <td>Room {b.room_number}</td>
-=======
-<<<<<<< HEAD
                           <td>
                             <div style={{ fontWeight: 700, color: '#101C35' }}>Room {formatRoomNumber(b.room_number)}</div>
                             <div style={{ fontSize: '0.78rem', color: '#8C6D23', fontWeight: 600 }}>{getRoomDisplayName(b)}</div>
                           </td>
-=======
-                          <td>Room {b.room_number}</td>
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                           <td style={{ fontWeight: 500 }}>{b.guest_name}</td>
                           <td>{b.guest_phone}</td>
                           <td>
@@ -340,18 +326,10 @@ export const DashboardOverview = ({ onNavigate }) => {
                   <tbody>
                     {stats.today_checkins.map((b) => (
                       <tr key={b.id}>
-<<<<<<< HEAD
-                        <td style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</td>
-=======
-<<<<<<< HEAD
                         <td>
                           <div style={{ fontWeight: 700, color: '#101C35' }}>Room {formatRoomNumber(b.room_number)}</div>
                           <div style={{ fontSize: '0.78rem', color: '#8C6D23', fontWeight: 600 }}>{getRoomDisplayName(b)}</div>
                         </td>
-=======
-                        <td style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</td>
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                         <td>
                           <div style={{ fontWeight: 600 }}>{b.guest_name}</div>
                           <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{b.guest_phone}</div>
@@ -408,18 +386,10 @@ export const DashboardOverview = ({ onNavigate }) => {
                   <tbody>
                     {stats.today_checkouts.map((b) => (
                       <tr key={b.id}>
-<<<<<<< HEAD
-                        <td style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</td>
-=======
-<<<<<<< HEAD
                         <td>
                           <div style={{ fontWeight: 700, color: '#101C35' }}>Room {formatRoomNumber(b.room_number)}</div>
                           <div style={{ fontSize: '0.78rem', color: '#8C6D23', fontWeight: 600 }}>{getRoomDisplayName(b)}</div>
                         </td>
-=======
-                        <td style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</td>
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
                         <td>
                           <div style={{ fontWeight: 600 }}>{b.guest_name}</div>
                           <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{b.guest_phone}</div>

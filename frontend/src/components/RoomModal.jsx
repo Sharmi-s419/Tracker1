@@ -9,16 +9,8 @@ export default function RoomModal({ room, onClose, onBookNow }) {
     if (onBookNow) {
       onBookNow(room);
     } else {
-<<<<<<< HEAD
-      window.location.href = getBookingAppUrl({ category: room.category });
-=======
-<<<<<<< HEAD
       const param = room.roomNumber ? { room: room.roomNumber } : { category: room.category };
       window.location.href = getBookingAppUrl(param);
-=======
-      window.location.href = getBookingAppUrl({ category: room.category });
->>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
->>>>>>> 6a43f53b1ed3a28ca4e61ef2d1ee435bcc3e170f
     }
   };
 
