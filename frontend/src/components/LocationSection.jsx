@@ -88,7 +88,11 @@ const nearbyLandmarks = [
 ];
 
 export default function LocationSection() {
+<<<<<<< HEAD
   const googleMapsUrl = 'https://maps.app.goo.gl/oAHJzUma2axes68P6';
+=======
+  const googleMapsUrl = 'https://maps.app.goo.gl/Tk3uEur3cttu12NZA?g_st=aw';
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
   return (
     <section
@@ -177,8 +181,14 @@ export default function LocationSection() {
                   marginBottom: '1.5rem',
                 }}
               >
+<<<<<<< HEAD
                 Nalloor Rd, Suchindrum, <br />
                 Eraviputhoor, Tamil Nadu — 629704, India.
+=======
+                Main Road (Near Thanumalayan Temple & ISKCON), <br />
+                Suchindram, Kanyakumari District, <br />
+                Tamil Nadu — 629704, India.
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
               </p>
 
               <div
@@ -279,7 +289,11 @@ export default function LocationSection() {
 
             <iframe
               title="Hotel Lara International Location Map"
+<<<<<<< HEAD
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.33611382404!2d77.4706665!3d8.1601671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f3203f4bde1d%3A0x80e1120d042fe253!2sHotel%20Lara%20International!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+=======
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15797.106456076295!2d77.4475475!3d8.1568434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f141db351a6d%3A0x88fecba68cfaebdc!2sSuchindram%2C%20Tamil%20Nadu%20629704!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '380px', display: 'block' }}

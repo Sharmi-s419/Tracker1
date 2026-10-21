@@ -49,7 +49,11 @@ export default function About() {
               }}
             >
               <img
+<<<<<<< HEAD
                 src="/images/hotel-lara-facade-exterior.png"
+=======
+                src="/images/hotel-lara-facade-exterior.webp"
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                 alt="Hotel Lara International exterior facade and front entrance on main road Suchindram"
                 loading="lazy"
                 style={{

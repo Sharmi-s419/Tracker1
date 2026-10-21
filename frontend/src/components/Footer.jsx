@@ -85,7 +85,11 @@ export default function Footer({ onReplayOpening }) {
             </p>
 
             <a
+<<<<<<< HEAD
               href="https://maps.app.goo.gl/oAHJzUma2axes68P6"
+=======
+              href="https://maps.app.goo.gl/Tk3uEur3cttu12NZA?g_st=aw"
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline-gold"
@@ -168,8 +172,14 @@ export default function Footer({ onReplayOpening }) {
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                 <MapPin size={18} color="#C6A15B" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <span>
+<<<<<<< HEAD
                   Nalloor Rd, Suchindrum, <br />
                   Eraviputhoor, Tamil Nadu — 629704.
+=======
+                  Main Road (Near Thanumalayan Temple & ISKCON), <br />
+                  Suchindram, Kanyakumari District, <br />
+                  Tamil Nadu — 629704.
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                 </span>
               </div>
 

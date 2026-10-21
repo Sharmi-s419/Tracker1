@@ -20,6 +20,7 @@ SECRET_KEY = os.getenv(
 )
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 't')
 
+<<<<<<< HEAD
 allowed_hosts_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver')
 ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_raw.split(',') if h.strip()]
 if 'testserver' not in ALLOWED_HOSTS:
@@ -28,6 +29,10 @@ if 'testserver' not in ALLOWED_HOSTS:
 
 
 # Render automatically injects RENDER_EXTERNAL_HOSTNAME
+=======
+allowed_hosts_raw = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_raw.split(',') if h.strip()]
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 render_hostname = os.getenv('RENDER_EXTERNAL_HOSTNAME')
 if render_hostname and render_hostname not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(render_hostname)
@@ -56,7 +61,11 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+<<<<<<< HEAD
     'whitenoise.middleware.WhiteNoiseMiddleware', # WhiteNoise must be after SecurityMiddleware
+=======
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -138,11 +147,14 @@ STORAGES = {
     },
 }
 
+<<<<<<< HEAD
 # Media files (Room photos, user uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django REST Framework Settings
@@ -185,6 +197,7 @@ if os.getenv("CORS_ALLOW_VERCEL_PREVIEWS", "False").lower() in ("true", "1"):
 if os.getenv("CORS_ALLOW_ALL_ORIGINS", "False").lower() in ("true", "1"):
     CORS_ALLOW_ALL_ORIGINS = True
 
+<<<<<<< HEAD
 # ==============================================================
 # PRODUCTION SECURITY SETTINGS (Render & Supabase)
 # ==============================================================
@@ -211,3 +224,8 @@ if render_hostname:
 custom_domain = os.getenv('CUSTOM_DOMAIN')
 if custom_domain:
     CSRF_TRUSTED_ORIGINS.append(f'https://{custom_domain}')
+=======
+# Optional override to permit all origins if explicitly requested via environment variable
+if os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False').lower() in ('true', '1'):
+    CORS_ALLOW_ALL_ORIGINS = True
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1

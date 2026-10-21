@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from decimal import Decimal
 from apps.rooms.models import Room, RoomStatus
 
+<<<<<<< HEAD
 INITIAL_ROOMS = [
     {'number': '001', 'name': 'Standard Double Room', 'floor': 'Ground Floor', 'bed': 'Double Bed'},
     {'number': '002', 'name': 'Standard Double Room', 'floor': 'Ground Floor', 'bed': 'Double Bed'},
@@ -21,6 +22,10 @@ INITIAL_ROOMS = [
 
 class Command(BaseCommand):
     help = "Initializes the 14 physical rooms with unique display names across Ground, First, and Second floors."
+=======
+class Command(BaseCommand):
+    help = "Initializes the 14 physical rooms for Hotel Lara International without inventing real prices or categories."
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -36,6 +41,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.WARNING("Resetting existing rooms..."))
             Room.objects.all().delete()
 
+<<<<<<< HEAD
         created_count = 0
         updated_count = 0
 
@@ -68,6 +74,29 @@ class Command(BaseCommand):
                     bed_type=item['bed'],
                     capacity=2,
                     base_price_per_night=Decimal('0.00'),
+=======
+        existing_count = Room.objects.count()
+        if existing_count >= 14 and not reset:
+            self.stdout.write(self.style.SUCCESS(
+                f"Room inventory already has {existing_count} rooms. No duplicate rooms created.\n"
+                f"Staff can configure details via the staff dashboard or Django admin."
+            ))
+            return
+
+        rooms_to_create = 14 - existing_count
+        created_count = 0
+
+        # Create the initial 14 physical rooms with placeholder numbering 101 to 114
+        for i in range(1, 15):
+            room_num = f"{100 + i}"
+            if not Room.objects.filter(room_number=room_num).exists():
+                Room.objects.create(
+                    room_number=room_num,
+                    room_type="Standard Room",  # Configurable by hotel staff
+                    floor="1st Floor" if i <= 7 else "2nd Floor",
+                    capacity=2,
+                    base_price_per_night=Decimal('0.00'),  # Configurable by hotel staff
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                     status=RoomStatus.AVAILABLE,
                     description="Hotel Lara International physical guest room.",
                     is_active=True
@@ -75,6 +104,11 @@ class Command(BaseCommand):
                 created_count += 1
 
         self.stdout.write(self.style.SUCCESS(
+<<<<<<< HEAD
             f"Successfully verified 14 rooms (Created: {created_count}, Updated names: {updated_count}, Total rooms: {Room.objects.count()}).\n"
             f"All 14 rooms now have their unique display names correctly assigned."
+=======
+            f"Successfully initialized {created_count} rooms (Total rooms: {Room.objects.count()}).\n"
+            f"Hotel management can now enter real room numbers, types, and tariffs via the Staff Dashboard."
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
         ))

@@ -7,10 +7,17 @@ const galleryCategories = [
     title: 'Exterior & Facade',
     count: 3,
     description: 'Landmark contemporary building facade, entrance portico, and illuminated 3D signage.',
+<<<<<<< HEAD
     previewImage: '/images/hotel-lara-facade-exterior.png',
     images: [
       {
         src: '/images/hotel-lara-facade-exterior.png',
+=======
+    previewImage: '/images/hotel-lara-facade-exterior.webp',
+    images: [
+      {
+        src: '/images/hotel-lara-facade-exterior.webp',
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
         alt: 'Hotel Lara International contemporary facade and entrance portico in Suchindram',
         title: 'Hotel Facade & Main Entrance',
         caption: 'Multi-storey hotel building located directly on the main highway corridor in Suchindram.'

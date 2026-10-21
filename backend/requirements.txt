@@ -6,4 +6,8 @@ python-dotenv>=1.0.1
 dj-database-url>=2.2.0
 psycopg[binary]>=3.2.3
 gunicorn>=23.0.0
+<<<<<<< HEAD
 whitenoise>=6.7.0
+=======
+whitenoise>=6.7.0
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1

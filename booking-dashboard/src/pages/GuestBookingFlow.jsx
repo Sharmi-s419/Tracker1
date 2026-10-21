@@ -23,7 +23,10 @@ import {
 } from 'lucide-react';
 import { roomsApi, bookingsApi } from '../api/client';
 import RotatingLogo from '../components/RotatingLogo';
+<<<<<<< HEAD
 import { getRoomDisplayName, FLOORS_CONFIG, getNormalizedFloor, formatRoomNumber, resolveRoomPhotoUrl } from '../constants/roomNames';
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
 // Real hotel photography mapping for verified room types
 const roomPhotoMap = {
@@ -33,10 +36,14 @@ const roomPhotoMap = {
   default: '/images/hotel-lara-deluxe-blue-room.webp',
 };
 
+<<<<<<< HEAD
 const getRoomImage = (room) => {
   const resolved = resolveRoomPhotoUrl(room);
   if (resolved) return resolved;
   const roomType = typeof room === 'object' ? (room?.room_type || '') : String(room || '');
+=======
+const getRoomImage = (roomType = '') => {
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
   const norm = roomType.toLowerCase();
   if (norm.includes('deluxe') || norm.includes('king')) return roomPhotoMap.deluxe;
   if (norm.includes('executive') || norm.includes('marble')) return roomPhotoMap.executive;
@@ -855,6 +862,7 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                 </button>
               </div>
             ) : (
+<<<<<<< HEAD
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                 {FLOORS_CONFIG.map((floor) => {
                   const floorRooms = filteredRooms.filter((r) => getNormalizedFloor(r) === floor.key);
@@ -957,6 +965,42 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                                 e.currentTarget.style.boxShadow = '0 4px 16px rgba(52, 35, 33, 0.06)';
                               }}
                             >
+=======
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                  gap: '1.75rem',
+                }}
+              >
+                {filteredRooms.map((room) => {
+                  const price = parseFloat(room.base_price_per_night || 0);
+                  const totalPrice = (price * nights).toLocaleString();
+                  const roomImg = getRoomImage(room.room_type);
+
+                  return (
+                    <div
+                      key={room.id}
+                      style={{
+                        backgroundColor: '#FFFFFF',
+                        borderRadius: '16px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 16px rgba(52, 35, 33, 0.06)',
+                        border: '1px solid #E6DDD3',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                        e.currentTarget.style.boxShadow = '0 12px 28px rgba(52, 35, 33, 0.12)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 4px 16px rgba(52, 35, 33, 0.06)';
+                      }}
+                    >
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                       {/* Room Photo with Fixed Aspect Ratio */}
                       <div style={{ position: 'relative', height: '220px', backgroundColor: '#101C35' }}>
                         <img
@@ -985,7 +1029,11 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                             border: '1px solid #C49A45',
                           }}
                         >
+<<<<<<< HEAD
                           Room {formatRoomNumber(room.room_number)} • {room.floor || 'Floor'}
+=======
+                          Room {room.room_number} • {room.floor || '1st Floor'}
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                         </div>
                       </div>
 
@@ -996,6 +1044,7 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                             fontFamily: "'Cinzel', Georgia, serif",
                             fontSize: '1.25rem',
                             color: '#17243D',
+<<<<<<< HEAD
                             marginBottom: '0.2rem',
                           }}
                         >
@@ -1014,6 +1063,13 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                         >
                           {room.room_type}
                         </div>
+=======
+                            marginBottom: '0.4rem',
+                          }}
+                        >
+                          {room.room_type}
+                        </h3>
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
                         <div
                           style={{
@@ -1111,6 +1167,7 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                   );
                 })}
               </div>
+<<<<<<< HEAD
             </section>
           );
         })}
@@ -1118,6 +1175,11 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
     )}
   </div>
 )}
+=======
+            )}
+          </div>
+        )}
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
         {/* =========================================================================
             STEP 3: RATE & BOOKING SUMMARY
@@ -1190,8 +1252,13 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                 }}
               >
                 <img
+<<<<<<< HEAD
                   src={getRoomImage(selectedRoom)}
                   alt={`Room ${formatRoomNumber(selectedRoom.room_number)} - ${getRoomDisplayName(selectedRoom)}`}
+=======
+                  src={getRoomImage(selectedRoom.room_type)}
+                  alt={selectedRoom.room_type}
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                   style={{
                     width: '120px',
                     height: '90px',
@@ -1212,6 +1279,7 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                       marginBottom: '0.35rem',
                     }}
                   >
+<<<<<<< HEAD
                     Room {formatRoomNumber(selectedRoom.room_number)} • {selectedRoom.floor || 'Floor'}
                   </div>
                   <h3 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: '1.35rem', color: '#17243D', marginBottom: '0.15rem' }}>
@@ -1220,6 +1288,13 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                   <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#C49A45', marginBottom: '0.35rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     {selectedRoom.room_type}
                   </div>
+=======
+                    Room {selectedRoom.room_number} • {selectedRoom.floor || '1st Floor'}
+                  </div>
+                  <h3 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: '1.35rem', color: '#17243D' }}>
+                    {selectedRoom.room_type}
+                  </h3>
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                   <p style={{ fontSize: '0.82rem', color: '#7A6B64', marginTop: '0.2rem' }}>
                     {selectedRoom.bed_type || 'Double Bed'} • Max {selectedRoom.capacity} Guests
                   </p>
@@ -1747,10 +1822,17 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                       Reserved Accommodation
                     </div>
                     <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#17243D', marginTop: '0.2rem' }}>
+<<<<<<< HEAD
                       Room {formatRoomNumber(confirmedBooking.room_number || selectedRoom?.room_number)} — {getRoomDisplayName(confirmedBooking.room_name ? confirmedBooking : selectedRoom)}
                     </div>
                     <div style={{ fontSize: '0.8rem', color: '#7A6B64' }}>
                       {confirmedBooking.room_type || selectedRoom?.room_type}
+=======
+                      Room {confirmedBooking.room_number || selectedRoom.room_number}
+                    </div>
+                    <div style={{ fontSize: '0.8rem', color: '#7A6B64' }}>
+                      {confirmedBooking.room_type || selectedRoom.room_type}
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                     </div>
                   </div>
 
@@ -1797,7 +1879,11 @@ export const GuestBookingFlow = ({ onStaffPortalClick }) => {
                     <div style={{ fontSize: '0.85rem', color: '#342321', lineHeight: 1.5 }}>
                       <strong>Hotel Lara International</strong>
                       <br />
+<<<<<<< HEAD
                       Nalloor Rd, Suchindrum, Eraviputhoor, Tamil Nadu — 629704
+=======
+                      Main Road, Suchindram, Kanyakumari District, Tamil Nadu — 629704
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                     </div>
                   </div>
 

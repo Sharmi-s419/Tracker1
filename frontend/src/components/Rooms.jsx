@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RoomModal from './RoomModal';
+<<<<<<< HEAD
 import { BedDouble, Users, ArrowRight, Check } from 'lucide-react';
 import { getBookingAppUrl } from '../utils/bookingUrl';
 
@@ -37,6 +38,11 @@ export const resolveFrontendRoomPhoto = (room) => {
   return null;
 };
 
+=======
+import { BedDouble, Users, Wind, ArrowRight, Tv, Check, Sparkles } from 'lucide-react';
+import { getBookingAppUrl } from '../utils/bookingUrl';
+
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 const roomsData = [
   {
     id: 'deluxe-ac-king',
@@ -117,6 +123,7 @@ const roomsData = [
   }
 ];
 
+<<<<<<< HEAD
 export const FLOOR_GROUPS = [
   {
     key: 'ground',
@@ -160,6 +167,8 @@ export const FLOOR_GROUPS = [
 
 export const ALL_14_ROOMS = FLOOR_GROUPS.flatMap((g) => g.rooms);
 
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 export default function Rooms({ onSelectRoomForBooking }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedRoomModal, setSelectedRoomModal] = useState(null);

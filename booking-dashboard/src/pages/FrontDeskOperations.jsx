@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Clock, CalendarCheck, CheckCircle2, RefreshCw, AlertCircle, Sparkles } from 'lucide-react';
 import { dashboardApi, bookingsApi, roomsApi } from '../api/client';
 import StatusBadge from '../components/StatusBadge';
+<<<<<<< HEAD
 import { getRoomDisplayName } from '../constants/roomNames';
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
 export const FrontDeskOperations = ({ targetBookingId, onSelectBooking }) => {
   const [stats, setStats] = useState(null);
@@ -34,7 +37,11 @@ export const FrontDeskOperations = ({ targetBookingId, onSelectBooking }) => {
     setSuccessMsg('');
     try {
       await bookingsApi.checkIn(bookingId);
+<<<<<<< HEAD
       setSuccessMsg(`Guest successfully checked into Room ${roomNumber} (${getRoomDisplayName(roomNumber)}). Room status set to Occupied.`);
+=======
+      setSuccessMsg(`Guest successfully checked into Room ${roomNumber}. Room status set to Occupied.`);
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
       loadData();
     } catch (err) {
       setError(err.response?.data?.error || 'Check-in failed.');
@@ -49,7 +56,11 @@ export const FrontDeskOperations = ({ targetBookingId, onSelectBooking }) => {
     setSuccessMsg('');
     try {
       await bookingsApi.checkOut(bookingId);
+<<<<<<< HEAD
       setSuccessMsg(`Guest checked out from Room ${roomNumber} (${getRoomDisplayName(roomNumber)}). Room placed in Cleaning / Turnover state.`);
+=======
+      setSuccessMsg(`Guest checked out from Room ${roomNumber}. Room placed in Cleaning / Turnover state.`);
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
       loadData();
     } catch (err) {
       setError(err.response?.data?.error || 'Check-out failed.');
@@ -129,10 +140,14 @@ export const FrontDeskOperations = ({ targetBookingId, onSelectBooking }) => {
                   <tbody>
                     {stats.today_checkins.map((b) => (
                       <tr key={b.id} style={targetBookingId === b.id ? { backgroundColor: '#F0F9FF' } : {}}>
+<<<<<<< HEAD
                         <td>
                           <div style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</div>
                           <div style={{ fontSize: '0.78rem', color: '#8C6D23', fontWeight: 600 }}>{getRoomDisplayName(b)}</div>
                         </td>
+=======
+                        <td style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</td>
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                         <td>
                           <div style={{ fontWeight: 600 }}>{b.guest_name}</div>
                           <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{b.guest_phone}</div>
@@ -194,10 +209,14 @@ export const FrontDeskOperations = ({ targetBookingId, onSelectBooking }) => {
                   <tbody>
                     {stats.today_checkouts.map((b) => (
                       <tr key={b.id}>
+<<<<<<< HEAD
                         <td>
                           <div style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</div>
                           <div style={{ fontSize: '0.78rem', color: '#8C6D23', fontWeight: 600 }}>{getRoomDisplayName(b)}</div>
                         </td>
+=======
+                        <td style={{ fontWeight: 700, color: '#101C35' }}>Room {b.room_number}</td>
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                         <td>
                           <div style={{ fontWeight: 600 }}>{b.guest_name}</div>
                           <div style={{ fontSize: '0.75rem', color: '#64748B' }}>

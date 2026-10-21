@@ -3,17 +3,23 @@ from .models import Room, RoomStatus
 
 class RoomSerializer(serializers.ModelSerializer):
     status_display = serializers.CharField(source='get_status_display', read_only=True)
+<<<<<<< HEAD
     display_name = serializers.CharField(read_only=True)
     photo_url = serializers.SerializerMethodField()
     image = serializers.ImageField(required=False, allow_null=True)
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
     class Meta:
         model = Room
         fields = [
             'id',
             'room_number',
+<<<<<<< HEAD
             'name',
             'display_name',
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
             'room_type',
             'bed_type',
             'floor',
@@ -23,13 +29,17 @@ class RoomSerializer(serializers.ModelSerializer):
             'status_display',
             'amenities',
             'description',
+<<<<<<< HEAD
             'image',
             'image_url',
             'photo_url',
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
             'is_active',
             'created_at',
             'updated_at',
         ]
+<<<<<<< HEAD
         read_only_fields = ['id', 'display_name', 'created_at', 'updated_at', 'photo_url']
 
     def get_photo_url(self, obj):
@@ -57,6 +67,9 @@ class RoomSerializer(serializers.ModelSerializer):
             data.pop('image', None)
         return super().to_internal_value(data)
 
+=======
+        read_only_fields = ['id', 'created_at', 'updated_at']
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
 class RoomStatusUpdateSerializer(serializers.ModelSerializer):
     class Meta:

@@ -9,8 +9,12 @@ export default function RoomModal({ room, onClose, onBookNow }) {
     if (onBookNow) {
       onBookNow(room);
     } else {
+<<<<<<< HEAD
       const param = room.roomNumber ? { room: room.roomNumber } : { category: room.category };
       window.location.href = getBookingAppUrl(param);
+=======
+      window.location.href = getBookingAppUrl({ category: room.category });
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
     }
   };
 

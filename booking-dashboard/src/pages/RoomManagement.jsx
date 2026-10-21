@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { BedDouble, Edit3, CheckCircle, AlertTriangle, RefreshCw, Sparkles, SlidersHorizontal, Upload, Image as ImageIcon } from 'lucide-react';
 import { roomsApi } from '../api/client';
 import StatusBadge from '../components/StatusBadge';
 import Modal from '../components/Modal';
 import { getRoomDisplayName, formatRoomNumber, getNormalizedFloor, FLOORS_CONFIG, resolveRoomPhotoUrl } from '../constants/roomNames';
+=======
+import { BedDouble, Edit3, CheckCircle, AlertTriangle, RefreshCw, Sparkles, SlidersHorizontal } from 'lucide-react';
+import { roomsApi } from '../api/client';
+import StatusBadge from '../components/StatusBadge';
+import Modal from '../components/Modal';
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
 
 export const RoomManagement = () => {
   const [rooms, setRooms] = useState([]);
@@ -12,9 +19,12 @@ export const RoomManagement = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [editingRoom, setEditingRoom] = useState(null);
   const [editFormData, setEditFormData] = useState({});
+<<<<<<< HEAD
   const [photoFile, setPhotoFile] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [photoError, setPhotoError] = useState('');
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
   const [saving, setSaving] = useState(false);
 
   const loadRooms = async () => {
@@ -46,12 +56,17 @@ export const RoomManagement = () => {
 
   const openEditModal = (room) => {
     setEditingRoom(room);
+<<<<<<< HEAD
     setPhotoFile(null);
     setPhotoPreview(resolveRoomPhotoUrl(room));
     setPhotoError('');
     setEditFormData({
       room_number: formatRoomNumber(room.room_number),
       name: room.name || getRoomDisplayName(room),
+=======
+    setEditFormData({
+      room_number: room.room_number,
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
       room_type: room.room_type,
       bed_type: room.bed_type || 'Double Bed',
       floor: room.floor,
@@ -63,6 +78,7 @@ export const RoomManagement = () => {
     });
   };
 
+<<<<<<< HEAD
   const handlePhotoChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -75,10 +91,13 @@ export const RoomManagement = () => {
     setPhotoPreview(URL.createObjectURL(file));
   };
 
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     setSaving(true);
     try {
+<<<<<<< HEAD
       const formData = new FormData();
       Object.keys(editFormData).forEach((key) => {
         if (editFormData[key] !== null && editFormData[key] !== undefined) {
@@ -92,6 +111,10 @@ export const RoomManagement = () => {
       setEditingRoom(null);
       setPhotoFile(null);
       setPhotoPreview(null);
+=======
+      await roomsApi.update(editingRoom.id, editFormData);
+      setEditingRoom(null);
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
       loadRooms();
     } catch (err) {
       alert('Failed to save room details: ' + (JSON.stringify(err.response?.data) || err.message));
@@ -100,7 +123,10 @@ export const RoomManagement = () => {
     }
   };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
   return (
     <div>
       <div
@@ -145,6 +171,7 @@ export const RoomManagement = () => {
 
       {error && <div className="alert alert-danger">{error}</div>}
 
+<<<<<<< HEAD
       {/* 14 Rooms Inventory Grouped by Floor */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
         {FLOORS_CONFIG.map((floor) => {
@@ -342,6 +369,96 @@ export const RoomManagement = () => {
             </div>
           );
         })}
+=======
+      {/* 14 Rooms Inventory Grid */}
+      <div className="room-grid">
+        {rooms.map((room) => (
+          <div key={room.id} className="room-card">
+            <div className="room-card-top">
+              <div>
+                <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#64748B', fontWeight: 600 }}>
+                  {room.floor || 'Floor'}
+                </span>
+                <div className="room-card-number">Room {room.room_number}</div>
+                <div className="room-card-type">{room.room_type}</div>
+              </div>
+              <StatusBadge status={room.status} />
+            </div>
+
+            <div className="room-card-meta">
+              <span>{room.bed_type || 'Double Bed'}</span>
+              <span>•</span>
+              <span>Capacity: {room.capacity} Guests</span>
+              <span>•</span>
+              <span className="room-card-tariff">
+                ₹{Number(room.base_price_per_night || 0).toLocaleString()} <span>/ night</span>
+              </span>
+            </div>
+
+            {room.amenities && (
+              <p style={{ fontSize: '0.75rem', color: '#B45309', background: '#FEF3C7', padding: '0.2rem 0.5rem', borderRadius: '4px', margin: '0.4rem 0' }}>
+                {room.amenities}
+              </p>
+            )}
+
+            {room.description && (
+              <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: 1.4 }}>
+                {room.description}
+              </p>
+            )}
+
+            <div
+              style={{
+                marginTop: 'auto',
+                paddingTop: '0.75rem',
+                borderTop: '1px solid #F1F5F9',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '0.5rem',
+              }}
+            >
+              <div style={{ display: 'flex', gap: '0.35rem' }}>
+                {room.status === 'cleaning' && (
+                  <button
+                    className="btn btn-success btn-sm"
+                    onClick={() => handleQuickStatusChange(room.id, 'available')}
+                    title="Mark room cleaned and ready"
+                  >
+                    <CheckCircle size={14} /> Ready
+                  </button>
+                )}
+                {room.status === 'available' && (
+                  <button
+                    className="btn btn-outline btn-sm"
+                    onClick={() => handleQuickStatusChange(room.id, 'cleaning')}
+                    title="Mark room for turnover"
+                  >
+                    <Sparkles size={14} /> Turn
+                  </button>
+                )}
+                <button
+                  className="btn btn-outline btn-sm"
+                  onClick={() =>
+                    handleQuickStatusChange(
+                      room.id,
+                      room.status === 'maintenance' ? 'available' : 'maintenance'
+                    )
+                  }
+                  title="Toggle maintenance"
+                >
+                  <AlertTriangle size={14} />
+                  {room.status === 'maintenance' ? 'Restore' : 'Maint'}
+                </button>
+              </div>
+
+              <button className="btn btn-outline btn-sm" onClick={() => openEditModal(room)}>
+                <Edit3 size={14} /> Edit
+              </button>
+            </div>
+          </div>
+        ))}
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
       </div>
 
       {/* Edit Room Modal */}
@@ -349,7 +466,11 @@ export const RoomManagement = () => {
         <Modal
           isOpen={true}
           onClose={() => setEditingRoom(null)}
+<<<<<<< HEAD
           title={`Configure Room ${formatRoomNumber(editingRoom.room_number)}`}
+=======
+          title={`Configure Room ${editingRoom.room_number}`}
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
           footer={
             <>
               <button className="btn btn-outline" onClick={() => setEditingRoom(null)}>
@@ -362,6 +483,7 @@ export const RoomManagement = () => {
           }
         >
           <form onSubmit={handleEditSubmit}>
+<<<<<<< HEAD
             {/* Room Photo Upload Section */}
             <div style={{ marginBottom: '1.25rem', backgroundColor: '#FAF7F1', padding: '1rem', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
               <label className="form-label" style={{ fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.5rem' }}>
@@ -410,6 +532,9 @@ export const RoomManagement = () => {
             </div>
 
             <div className="form-grid-3">
+=======
+            <div className="form-grid-2">
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
               <div className="form-group">
                 <label className="form-label">Room Number</label>
                 <input
@@ -424,6 +549,7 @@ export const RoomManagement = () => {
               </div>
 
               <div className="form-group">
+<<<<<<< HEAD
                 <label className="form-label">Display Name</label>
                 <input
                   type="text"
@@ -438,6 +564,8 @@ export const RoomManagement = () => {
               </div>
 
               <div className="form-group">
+=======
+>>>>>>> f1730d5570d481d6b12e9012a831895b47ab94f1
                 <label className="form-label">Room Type / Category</label>
                 <input
                   type="text"
