@@ -1,0 +1,442 @@
+/* ==========================================================================
+   HOTEL LARA INTERNATIONAL — DESIGN SYSTEM & TOKENS
+   Inspired by luxury European hospitality & architectural minimalism
+   ========================================================================== */
+
+:root {
+  /* Brand Color Palette (Screenshot 2 Specifications) */
+  --color-navy: #17243D;
+  --color-navy-dark: #0F1726;
+  --color-navy-light: #203152;
+  --color-navy-surface: rgba(23, 36, 61, 0.88);
+
+  /* Gold Color Palette (Screenshot 2 Specifications) */
+  --color-gold-primary: #C49A45;
+  --color-gold: #C49A45;
+  --color-gold-bright: #D9B568;
+  --color-gold-dark: #A77B2E;
+  --color-gold-hover: #A77B2E;
+  --color-gold-subtle: rgba(196, 154, 69, 0.15);
+  --color-gold-border: rgba(196, 154, 69, 0.35);
+  --color-gold-glow: rgba(196, 154, 69, 0.35);
+
+  --color-ivory: #FAF7F1;
+  --color-ivory-light: #FCFAF6;
+  --color-ivory-dark: #ECE7DC;
+
+  /* Reference Design System Colors */
+  --color-cream: #FAF7F1;
+  --color-dark-brown: #342321;
+  --color-muted-brown: #7A6B64;
+  --color-burgundy: #C49A45; /* Migrated to gold */
+  --color-burgundy-hover: #A77B2E; /* Migrated to dark gold */
+  --color-soft-beige: #EFE3D5;
+  --color-warm-border: #E6DDD3;
+
+  --color-white: #FFFFFF;
+  --color-charcoal: #342321;
+  --color-charcoal-muted: #7A6B64;
+  --color-charcoal-border: #E6DDD3;
+
+  /* Typography */
+  --font-serif: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-subserif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Outfit', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transitions & Curves */
+  --ease-luxury: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-smooth: cubic-bezier(0.76, 0, 0.24, 1);
+  --transition-fast: 0.25s var(--ease-luxury);
+  --transition-normal: 0.4s var(--ease-luxury);
+  --transition-slow: 0.8s var(--ease-luxury);
+
+  /* Shadows & Glass */
+  --shadow-sm: 0 4px 12px rgba(16, 28, 53, 0.06);
+  --shadow-md: 0 10px 30px rgba(16, 28, 53, 0.1);
+  --shadow-lg: 0 20px 45px rgba(16, 28, 53, 0.16);
+  --shadow-gold: 0 8px 30px rgba(198, 161, 91, 0.22);
+  --shadow-dark: 0 12px 40px rgba(0, 0, 0, 0.35);
+
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-navy: rgba(16, 28, 53, 0.92);
+  --glass-blur: blur(14px);
+
+  /* Layout */
+  --max-width: 1320px;
+  --max-width-wide: 1480px;
+  --section-padding: 6.5rem 1.5rem;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 9999px;
+}
+
+/* Base Reset & Smooth Scroll */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  overflow-x: hidden;
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-navy);
+  line-height: 1.25;
+}
+
+.heading-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+}
+
+.heading-section {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.heading-sub {
+  font-family: var(--font-subserif);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold-dark);
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.eyebrow::before, .eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.7;
+}
+
+.lead-text {
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: var(--color-charcoal-muted);
+  line-height: 1.8;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ==========================================================================
+   BUTTONS & CTA
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--border-radius-sm);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #C49A45;
+  outline-offset: 3px;
+}
+
+.btn:disabled,
+.btn[disabled] {
+  background-color: #E2DDD5 !important;
+  color: #8C827A !important;
+  border-color: #D5CECE !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+  opacity: 0.65;
+}
+
+/* Primary Gold Button (Visual Reference: Screenshot 2) */
+.btn-gold,
+.btn-primary,
+.btn-burgundy {
+  background-color: #C49A45;
+  color: #17243D;
+  border: 1px solid #C49A45;
+  box-shadow: 0 4px 14px rgba(196, 154, 69, 0.32);
+  font-weight: 600;
+}
+
+.btn-gold:hover,
+.btn-primary:hover,
+.btn-burgundy:hover {
+  background-color: #A77B2E;
+  border-color: #A77B2E;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(167, 123, 46, 0.42);
+}
+
+.btn-gold:active,
+.btn-primary:active,
+.btn-burgundy:active {
+  transform: translateY(0);
+}
+
+.btn-navy {
+  background-color: #17243D;
+  color: #FFFFFF;
+  border: 1px solid rgba(196, 154, 69, 0.35);
+}
+
+.btn-navy:hover {
+  background-color: #203152;
+  border-color: #C49A45;
+  color: #D9B568;
+  transform: translateY(-2px);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: #C49A45;
+  border: 1px solid #C49A45;
+}
+
+.btn-outline-gold:hover {
+  background: #C49A45;
+  color: #17243D;
+  box-shadow: 0 4px 14px rgba(196, 154, 69, 0.28);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   ANIMATIONS & ROTATIONS
+   ========================================================================== */
+
+@keyframes rotateContinuously {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGold {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-spin-slow {
+  animation: rotateContinuously 22s linear infinite;
+  transform-origin: center center;
+}
+
+.animate-spin-slow:hover {
+  animation-duration: 12s;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-spin-slow {
+    animation: none !important;
+  }
+}
+
+/* Section Divider Line */
+.gold-line {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.gold-line-center {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 1.25rem auto 1.75rem;
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F5E0B2 0%, #C6A15B 50%, #9A752F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #091020;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C6A15B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #DFBF7D;
+}
+
+/* Luxury Attraction Cards */
+.attraction-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid rgba(198, 161, 91, 0.28);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s var(--ease-luxury), box-shadow 0.35s var(--ease-luxury), border-color 0.35s ease;
+}
+
+.attraction-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(16, 28, 53, 0.12);
+  border-color: var(--color-gold) !important;
+}
+
+.attraction-image-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: #101C35;
+}
+
+.attraction-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.attraction-card:hover .attraction-img {
+  transform: scale(1.06);
+}
+
+.attraction-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(16, 28, 53, 0.75) 0%, rgba(16, 28, 53, 0.2) 40%, transparent 70%);
+  pointer-events: none;
+}
